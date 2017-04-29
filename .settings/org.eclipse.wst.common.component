@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="limberest-demo">
+        <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
+        <dependent-module archiveName="limberest.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/limberest/limberest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="limberest-demo"/>
+        <property name="java-output-path" value="/limberest-demo/build/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,11 @@
+api:
+  definitionClasses:
+    - io.limberest.demo.api.Definition
+  prettyIndent: 2
+
+request:
+  fallbackContentType:
+    get : application/json
+      
+response:
+  prettyIndent: 2
