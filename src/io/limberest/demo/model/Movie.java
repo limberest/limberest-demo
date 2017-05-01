@@ -25,6 +25,7 @@ public class Movie extends Item implements Jsonable {
      */
     public Movie(String id, Movie movie) {
         super(id, movie.getTitle());
+        super.setCategory(movie.getCategory());
         year = movie.year;
         poster = movie.poster;
         rating = movie.rating;
@@ -76,7 +77,10 @@ public class Movie extends Item implements Jsonable {
     @Override
     public JSONObject toJson() {
       JSONObject json = super.toJson();
-      json.put("rating", BigDecimal.valueOf(rating).setScale(1));
+      if (rating > 0)
+          json.put("rating", BigDecimal.valueOf(rating).setScale(1));
+      else if (json.has("rating"))
+          json.remove("rating"); // zero means unrated
       return json;
     }
 

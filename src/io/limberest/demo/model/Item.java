@@ -16,6 +16,10 @@ public class Item implements Jsonable {
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     
+    private String category;
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
+    
     public Item(JSONObject json) throws JSONException {
         bind(json);
         // manually bind id since it has no public setter
