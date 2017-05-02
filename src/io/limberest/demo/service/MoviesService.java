@@ -2,6 +2,7 @@ package io.limberest.demo.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.ServiceLoader;
 
 import javax.ws.rs.Path;
 
@@ -9,6 +10,8 @@ import org.json.JSONObject;
 
 import io.limberest.api.validate.SwaggerValidator;
 import io.limberest.demo.model.Movie;
+import io.limberest.demo.persist.MoviesPersistFile;
+import io.limberest.demo.persist.Persist;
 import io.limberest.demo.persist.Persist.PersistException;
 import io.limberest.json.JsonList;
 import io.limberest.json.JsonRestService;
@@ -28,9 +31,6 @@ import io.swagger.models.properties.DecimalProperty;
 @Path("/movies")
 @Api("limberest demo movies")
 public class MoviesService extends JsonRestService {
-
-    private MoviesAccess moviesAccess = new MoviesAccess();
-    MoviesAccess getAccess() { return moviesAccess; }
 
     @ApiOperation(value="Retrieve movies",
         notes="Returns an (optionally paginated) array of movies matching query criteria.",
@@ -52,7 +52,7 @@ public class MoviesService extends JsonRestService {
         try {
             validate(request);
 
-            List<Movie> movies = getAccess().getMovies(request.getQuery());
+            List<Movie> movies = getPersist().retrieve(request.getQuery());
             JsonList<Movie> jsonList = new JsonList<>(movies, "movies");
             return new Response<>(jsonList.toJson());
         } 
@@ -70,7 +70,7 @@ public class MoviesService extends JsonRestService {
         validate(request);
         
         try {
-            Movie movie = getAccess().create(new Movie(request.getBody()));
+            Movie movie = getPersist().create(new Movie(request.getBody()));
             return new Response<>(Status.CREATED, movie.toJson());
         } 
         catch (PersistException ex) {
@@ -108,4 +108,16 @@ public class MoviesService extends JsonRestService {
         return val;
     }
     
+    /**
+     * Crude injection.
+     */
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static Persist<Movie> getPersist() {
+        ServiceLoader<Persist> persistLoader = ServiceLoader.load(Persist.class);
+        for (Persist<?> persist : persistLoader) {
+            if (persist != null && persist.getType().equals(Movie.class))
+                return (Persist<Movie>)persist;
+        }
+        return new MoviesPersistFile("movies.json");
+    }    
 }

@@ -37,7 +37,7 @@ public class MovieService extends MoviesService {
         
         try {
             String id = request.getPath().getSegment(1);
-            Movie movie = getAccess().get(id);
+            Movie movie = getPersist().get(id);
             if (movie == null)
                 throw new ServiceException(Status.NOT_FOUND, "Movie not found with id: " + id);
             else
@@ -67,7 +67,7 @@ public class MovieService extends MoviesService {
             if (movie.getId() == null)
                 movie = new Movie(id, movie);
             
-            getAccess().update(movie);
+            getPersist().update(movie);
             StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie updated: " + movie.getId());
             return new Response<>(statusResponse.toJson());
         } 
@@ -88,7 +88,7 @@ public class MovieService extends MoviesService {
             String id = request.getPath().getSegment(1);
             if (id == null)
                 throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
-            getAccess().delete(id);
+            getPersist().delete(id);
             StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie deleted: " + id);
             return new Response<>(statusResponse.toJson());
         } 
