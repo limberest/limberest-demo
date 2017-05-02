@@ -49,7 +49,7 @@ public class MoviesPersistFile implements Persist<Movie> {
         String id = generateId(movie);
         for (Movie m : movies) {
             if (m.getId().equals(id)) {
-                throw new PersistException("Movie already exists with id: " +id);
+                throw new PersistException("Movie already exists with id: " + id);
             }
         }
         Movie newMovie = new Movie(id, movie);
