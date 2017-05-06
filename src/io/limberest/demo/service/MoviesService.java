@@ -12,7 +12,6 @@ import io.limberest.api.validate.SwaggerValidator;
 import io.limberest.demo.model.Movie;
 import io.limberest.demo.persist.MoviesPersistFile;
 import io.limberest.demo.persist.Persist;
-import io.limberest.demo.persist.Persist.PersistException;
 import io.limberest.json.JsonList;
 import io.limberest.json.JsonRestService;
 import io.limberest.service.ServiceException;
@@ -49,16 +48,11 @@ public class MoviesService extends JsonRestService {
         @ApiImplicitParam(name="count", paramType="query", dataType="boolean", value="Return item count only"),
     })
     public Response<JSONObject> get(Request<JSONObject> request) throws ServiceException {
-        try {
-            validate(request);
+        validate(request);
 
-            List<Movie> movies = getPersist().retrieve(request.getQuery());
-            JsonList<Movie> jsonList = new JsonList<>(movies, "movies");
-            return new Response<>(jsonList.toJson());
-        } 
-        catch (PersistException ex) {
-            throw new ServiceException(Status.INTERNAL_ERROR, ex.getMessage(), ex);
-        }
+        List<Movie> movies = getPersist().retrieve(request.getQuery());
+        JsonList<Movie> jsonList = new JsonList<>(movies, "movies");
+        return new Response<>(jsonList.toJson());
     }    
     
     @Override
@@ -69,13 +63,8 @@ public class MoviesService extends JsonRestService {
         
         validate(request);
         
-        try {
-            Movie movie = getPersist().create(new Movie(request.getBody()));
-            return new Response<>(Status.CREATED, movie.toJson());
-        } 
-        catch (PersistException ex) {
-            throw new ServiceException(Status.INTERNAL_ERROR, ex.getMessage(), ex);
-        }
+        Movie movie = getPersist().create(new Movie(request.getBody()));
+        return new Response<>(Status.CREATED, movie.toJson());
     }
 
     /**
