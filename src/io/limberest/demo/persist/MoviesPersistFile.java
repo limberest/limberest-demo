@@ -16,6 +16,7 @@ import io.limberest.json.JsonMatcher;
 import io.limberest.json.JsonObject;
 import io.limberest.json.JsonableComparator;
 import io.limberest.service.Query;
+import io.limberest.service.http.Status;
 import io.limberest.util.FileLoader;
 
 /**
@@ -73,7 +74,7 @@ public class MoviesPersistFile implements Persist<Movie> {
             String id = generateId(movie);
             for (Movie m : _movies) {
                 if (m.getId().equals(id)) {
-                    throw new PersistException("Movie already exists with id: " + id);
+                    throw new PersistException(Status.CONFLICT, "Movie already exists with id: " + id);
                 }
             }
             Movie newMovie = new Movie(id, movie);
@@ -95,7 +96,7 @@ public class MoviesPersistFile implements Persist<Movie> {
                 }
             }
             if (toReplace == null)
-                throw new PersistException("Movie not found with id: " + movie.getId());
+                throw new PersistException(Status.NOT_FOUND, "Movie not found with id: " + movie.getId());
             _movies.remove(toReplace);
             _movies.add(movie);
             save();
@@ -115,7 +116,7 @@ public class MoviesPersistFile implements Persist<Movie> {
                 }
             }
             if (idx == -1)
-                throw new PersistException("Movie not found with id: " + id);
+                throw new PersistException(Status.NOT_FOUND, "Movie not found with id: " + id);
             _movies.remove(idx);
             save();
         }

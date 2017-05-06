@@ -3,6 +3,8 @@ package io.limberest.demo.persist;
 import java.util.List;
 
 import io.limberest.service.Query;
+import io.limberest.service.ServiceException;
+import io.limberest.service.http.Status;
 
 public interface Persist<T> {
 
@@ -13,14 +15,22 @@ public interface Persist<T> {
     void delete(String id) throws PersistException;
     Class<T> getType();
     
-    public class PersistException extends Exception {
+    public class PersistException extends ServiceException {
 
-        public PersistException(String message) {
-            super(message);
+        public PersistException(String message, Throwable cause) {
+            this(Status.INTERNAL_ERROR, message, cause);
         }
         
-        public PersistException(String message, Throwable cause) {
-            super(message, cause);
+        public PersistException(Status status, String message) {
+            super(status, message);
+        }
+
+        public PersistException(Status status, String message, Throwable cause) {
+            super(status, message, cause);
+        }
+        
+        public PersistException(Status status, Throwable cause) {
+            super(status, cause);
         }
     }    
 }

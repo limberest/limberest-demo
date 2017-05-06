@@ -8,7 +8,6 @@ import javax.ws.rs.Path;
 import org.json.JSONObject;
 
 import io.limberest.demo.model.Movie;
-import io.limberest.demo.persist.Persist.PersistException;
 import io.limberest.json.StatusResponse;
 import io.limberest.service.ServiceException;
 import io.limberest.service.http.Request;
@@ -35,17 +34,12 @@ public class MovieService extends MoviesService {
         
         validate(request);
         
-        try {
-            String id = request.getPath().getSegment(1);
-            Movie movie = getPersist().get(id);
-            if (movie == null)
-                throw new ServiceException(Status.NOT_FOUND, "Movie not found with id: " + id);
-            else
-                return new Response<>(movie.toJson());
-        } 
-        catch (PersistException ex) {
-            throw new ServiceException(Status.INTERNAL_ERROR, ex.getMessage(), ex);
-        }
+        String id = request.getPath().getSegment(1);
+        Movie movie = getPersist().get(id);
+        if (movie == null)
+            throw new ServiceException(Status.NOT_FOUND, "Movie not found with id: " + id);
+        else
+            return new Response<>(movie.toJson());
     }
     
     @Override
@@ -57,23 +51,18 @@ public class MovieService extends MoviesService {
         
         validate(request);
         
-        try {
-            String id = request.getPath().getSegment(1);
-            if (id == null)
-                throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
-            Movie movie = new Movie(request.getBody());
-            if (movie.getId() != null && !id.equals(movie.getId()))
-                throw new ServiceException(Status.BAD_REQUEST, "Cannot modify movie id: " + id);
-            if (movie.getId() == null)
-                movie = new Movie(id, movie);
-            
-            getPersist().update(movie);
-            StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie updated: " + movie.getId());
-            return new Response<>(statusResponse.toJson());
-        } 
-        catch (PersistException ex) {
-            throw new ServiceException(Status.INTERNAL_ERROR, ex.getMessage(), ex);
-        }
+        String id = request.getPath().getSegment(1);
+        if (id == null)
+            throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
+        Movie movie = new Movie(request.getBody());
+        if (movie.getId() != null && !id.equals(movie.getId()))
+            throw new ServiceException(Status.BAD_REQUEST, "Cannot modify movie id: " + id);
+        if (movie.getId() == null)
+            movie = new Movie(id, movie);
+        
+        getPersist().update(movie);
+        StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie updated: " + movie.getId());
+        return new Response<>(statusResponse.toJson());
     }
 
     @Override
@@ -84,17 +73,12 @@ public class MovieService extends MoviesService {
         
         validate(request);
         
-        try {
-            String id = request.getPath().getSegment(1);
-            if (id == null)
-                throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
-            getPersist().delete(id);
-            StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie deleted: " + id);
-            return new Response<>(statusResponse.toJson());
-        } 
-        catch (PersistException ex) {
-            throw new ServiceException(Status.INTERNAL_ERROR, ex.getMessage(), ex);
-        }
+        String id = request.getPath().getSegment(1);
+        if (id == null)
+            throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
+        getPersist().delete(id);
+        StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie deleted: " + id);
+        return new Response<>(statusResponse.toJson());
     }
 
     /**
