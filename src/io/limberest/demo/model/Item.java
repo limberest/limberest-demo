@@ -1,6 +1,5 @@
 package io.limberest.demo.model;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.limberest.json.Jsonable;
@@ -20,9 +19,9 @@ public class Item implements Jsonable {
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
     
-    public Item(JSONObject json) throws JSONException {
+    public Item(JSONObject json) {
         bind(json);
-        // manually bind id since it has no public setter
+        // explicitly bind id since it has no public setter
         if (json.has("id"))
             id = json.getString("id");
     }

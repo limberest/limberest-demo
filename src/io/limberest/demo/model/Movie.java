@@ -72,7 +72,7 @@ public class Movie extends Item implements Jsonable {
     public void setOwned(boolean owned) { this.owned = owned; }
     
     /**
-     * Overridden since rating (float) is nonstandard JSONObject type.
+     * Overridden since rating (float) is a nonstandard JSONObject type.
      */
     @Override
     public JSONObject toJson() {
