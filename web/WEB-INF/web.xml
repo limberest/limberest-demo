@@ -10,4 +10,14 @@
     <auth-method>BASIC</auth-method>
   </login-config>
   
+  <servlet>
+    <servlet-name>io.limberest.service.http.RestServlet</servlet-name>
+    <servlet-class>io.limberest.service.http.RestServlet</servlet-class>
+  </servlet>  
+
+  <servlet-mapping>
+    <servlet-name>io.limberest.service.http.RestServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>  
+  
 </web-app>
