@@ -52,7 +52,7 @@ public class MoviesService extends JsonRestService {
         List<Movie> movies = getPersist().retrieve(request.getQuery());
         JsonList<Movie> jsonList = new JsonList<>(movies, "movies");
         return new Response<>(jsonList.toJson());
-    }    
+    }
     
     @Override
     @ApiOperation(value="Create a movie", response=Movie.class)
@@ -75,8 +75,7 @@ public class MoviesService extends JsonRestService {
     public boolean isAuthenticationRequired(Request<JSONObject> request) {
         return request.getMethod() != HttpMethod.GET;
     }
-    
-    
+        
     protected void validate(Request<JSONObject> request) throws ValidationException {
         Result result = getSwaggerValidator().validate(request, true);
         if (result.isError())
