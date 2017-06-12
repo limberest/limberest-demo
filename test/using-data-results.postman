@@ -1,0 +1,132 @@
+{
+	"id": "73debd7c-c607-4bbb-9097-fc2afe924add",
+	"name": "Using data files",
+	"allTests": [],
+	"timestamp": "2017-06-11T22:50:06.511Z",
+	"collection_id": "1b8aeeb8-7e53-9fe7-db23-5fcbe26a9ef6",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "no-environment",
+	"data": [],
+	"delay": 0,
+	"count": 4,
+	"collection": {
+		"id": "1b8aeeb8-7e53-9fe7-db23-5fcbe26a9ef6",
+		"name": "Using data files",
+		"description": "",
+		"order": [
+			"11407ac1-dba4-70f0-c530-a0ef0abbe07c"
+		],
+		"folders": [],
+		"timestamp": 0,
+		"synced": true,
+		"remote_id": 0,
+		"owner": "2204960",
+		"sharedWithTeam": false,
+		"subscribed": false,
+		"remoteLink": "",
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"createdAt": 1497221077447,
+		"updatedAt": 1497221077447,
+		"write": true,
+		"published": false,
+		"favorite": false,
+		"permissions": {},
+		"syncedPermissions": {}
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "id",
+			"value": "5c0a01b6",
+			"enabled": true,
+			"type": "text"
+		},
+		{
+			"key": "query",
+			"value": "year=1931&sort=rating&descending=true",
+			"enabled": true,
+			"type": "text"
+		}
+	],
+	"results": [
+		{
+			"name": "POST Request",
+			"id": "11407ac1-dba4-70f0-c530-a0ef0abbe07c",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Response has data value",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Response has data value": {
+					"pass": 4,
+					"fail": 0
+				}
+			},
+			"times": [
+				"113",
+				"131",
+				"105",
+				"97"
+			],
+			"allTests": [
+				{
+					"Response has data value": true
+				},
+				{
+					"name": "Response has data value",
+					"status": "pass"
+				},
+				{
+					"name": "Response has data value",
+					"status": "pass"
+				},
+				{
+					"name": "Response has data value",
+					"status": "pass"
+				}
+			],
+			"time": "97",
+			"totalRequestTime": "11313110597",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 4,
+	"totalFail": 0,
+	"totalTime": 446,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "POST Request",
+			"id": "11407ac1-dba4-70f0-c530-a0ef0abbe07c",
+			"url": "postman-echo.com/post",
+			"time": "97",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Response has data value": {
+					"pass": 4,
+					"fail": 0
+				}
+			}
+		}
+	],
+	"synced": false
+}

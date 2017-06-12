@@ -33,7 +33,6 @@ public class MoviesPersistFile implements Persist<Movie> {
     
     @Override
     public List<Movie> retrieve(Query query) throws PersistException {
-        
         List<Movie> movies = getMovies();
         Stream<Movie> stream = movies.stream();
         

@@ -19,6 +19,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * Extends {@link MoviesService} for paths qualified by movie ID.
+ */
 @Path(value="/movies/{id}" )
 @Api("limberest demo movie")
 public class MovieService extends MoviesService {
@@ -84,9 +87,6 @@ public class MovieService extends MoviesService {
     /**
      * This implementation illustrates how to restrict operations to users
      * with specific roles.  Only DELETE operations are restricted here.
-     * 
-     * NOTE: isAuthenticationRequired() must return true for this to work
-     * with Java container authentication.
      */
     @Override
     public List<String> getRolesAllowedAccess(Request<JSONObject> request) {
@@ -95,7 +95,6 @@ public class MovieService extends MoviesService {
             roles.add("Deleters");
             return roles;
         }
-        
         return null; // access is not restricted for other operations
     }
 }

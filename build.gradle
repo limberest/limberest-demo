@@ -1,52 +1,48 @@
 plugins {
-	id 'java'
-	id 'war'
+    id 'java'
+    id 'war'
 }
 
 jar {
-	baseName = 'limberest-demo'
-	version =  '1.0.01'
+    baseName = 'limberest-demo'
+    version =  '1.0.02-SNAPSHOT'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 sourceSets {
-	main {
-		java {
+    main {
+        java {
             srcDirs = ['src', 'test']
-		}
-		output.classesDir = 'build/classes'
-	}
+        }
+        output.classesDir = 'build/classes'
+    }
 }
 
 dependencies {
-
-    // TODO: depend on limberest from a repository
+    
     compile files('c:/eclipse_workspace/limberest/build/classes')
-	
-	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
-	
-	compile 'javax.ws.rs:javax.ws.rs-api:2.0'
-	compile 'org.json:json:20160810'
-	compile 'ch.qos.logback:logback-core:1.1.9'
-	compile 'ch.qos.logback:logback-classic:1.1.9'
-	compile 'io.swagger:swagger-annotations:1.5.12'
-    compile 'junit:junit:4.12'
-	
-	// runtime dependencies needed by limberest (since treated as files dep)
-	// TODO: remove when limberest is available from a repository
-	compile 'com.google.guava:guava:21.0'
-	compile 'org.reflections:reflections:0.9.10'
-	compile 'io.swagger:swagger-core:1.5.12'
-	compile 'io.swagger:swagger-models:1.5.12'
-	compile 'io.swagger:swagger-servlet:1.5.12'
-	compile 'com.fasterxml.jackson.core:jackson-core:2.8.6'
-	compile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
+    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'com.google.guava:guava:21.0'
+    compile 'org.reflections:reflections:0.9.10'
+    compile 'io.swagger:swagger-core:1.5.13'
+    compile 'io.swagger:swagger-models:1.5.13'
+    compile 'io.swagger:swagger-servlet:1.5.13'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.8.6'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
+
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0'
+    compile 'org.json:json:20160810'
+    compile 'ch.qos.logback:logback-core:1.1.9'
+    compile 'ch.qos.logback:logback-classic:1.1.9'
+    compile 'io.swagger:swagger-annotations:1.5.13'
+    compile 'junit:junit:4.12'    
 }
 
 war {

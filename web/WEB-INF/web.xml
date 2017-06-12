@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xmlns="http://java.sun.com/xml/ns/javaee" id="oakesville.io" version="3.1">
+  xmlns="http://java.sun.com/xml/ns/javaee" id="limberest.io" version="3.1">
   
   <display-name>limberest-demo</display-name>
 
@@ -9,5 +9,15 @@
   <login-config>
     <auth-method>BASIC</auth-method>
   </login-config>
+  
+  <servlet>
+    <servlet-name>io.limberest.service.http.RestServlet</servlet-name>
+    <servlet-class>io.limberest.service.http.RestServlet</servlet-class>
+  </servlet>  
+
+  <servlet-mapping>
+    <servlet-name>io.limberest.service.http.RestServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>  
   
 </web-app>

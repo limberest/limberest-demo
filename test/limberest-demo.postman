@@ -1,0 +1,191 @@
+{
+	"variables": [],
+	"info": {
+		"name": "limberest-demo",
+		"_postman_id": "e17085f3-45e3-5197-b8a1-f3fd3aeb0098",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api-docs",
+			"request": {
+				"url": "{{base-url}}/api-docs",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "movies",
+			"request": {
+				"url": "{{base-url}}/movies",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "movies/{{id}}",
+			"request": {
+				"url": "{{base-url}}/movies/{{id}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "movies?{{query}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Body is correct\"] = responseBody === \"response_body_string\";",
+							"",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "{{base-url}}/movies?{{query}}",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "{{query}}",
+							"value": "",
+							"equals": false,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "movies/{{id}}",
+			"request": {
+				"url": "{{base-url}}/movies/{{id}}",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic cmVndWxhcjppYmVhdXRoZW50aWNhdGVk",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"credits\": [\n    {\n      \"name\": \"Dip\",\n      \"role\": \"director\"\n    },\n    {\n      \"name\": \"Rich\",\n      \"role\": \"actor\"\n    },\n    {\n      \"name\": \"Dale\",\n      \"role\": \"actor\"\n    }\n  ],\n  \"description\": \"I rate this PG, for Pretty Godawful.\",\n  \"id\": \"{{id}}\",\n  \"poster\": \"mvmt.jpg\",\n  \"rating\": 0.5,\n  \"title\": \"Movement\",\n  \"webRef\": {\n    \"ref\": \"tt000000\",\n    \"site\": \"imdb.com\"\n  },\n  \"year\": 2026\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "movies",
+			"request": {
+				"url": "{{base-url}}/movies",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic cmVndWxhcjppYmVhdXRoZW50aWNhdGVk",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"credits\": [\r\n\t{\r\n\t  \"name\": \"Skip\",\r\n\t  \"role\": \"director\"\r\n\t},\r\n\t{\r\n\t  \"name\": \"Rich\",\r\n\t  \"role\": \"actor\"\r\n\t},\r\n\t{\r\n\t  \"name\": \"Dale\",\r\n\t  \"role\": \"actor\"\r\n\t}\r\n  ],\r\n  \"description\": \"I rate this PG, for Pretty Godawful.\",\r\n  \"poster\": \"mvmt.jpg\",\r\n  \"rating\": 0.5,\r\n  \"title\": \"Movement\",\r\n  \"webRef\": {\r\n\t\"ref\": \"tt000000\",\r\n\t\"site\": \"imdb.com\"\r\n  },\r\n  \"year\": 2026\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "movies/{{id}}",
+			"request": {
+				"url": "{{base-url}}/movies/{{id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic ZGVsZXRlcjppY2FuZGVsZXRl",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

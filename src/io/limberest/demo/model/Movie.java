@@ -39,7 +39,7 @@ public class Movie extends Item implements Jsonable {
         super(id, title);
     }
     
-    @ApiModelProperty(required=true, allowableValues="[1900, infinity]")    
+    @ApiModelProperty(required=true, allowableValues="range[1900, infinity]")    
     private int year;
     public int getYear() { return year; }
     public void setYear(int year) { this.year = year; }
@@ -72,7 +72,7 @@ public class Movie extends Item implements Jsonable {
     public void setOwned(boolean owned) { this.owned = owned; }
     
     /**
-     * Overridden since rating (float) is nonstandard JSONObject type.
+     * Overridden since rating (float) is a nonstandard JSONObject type.
      */
     @Override
     public JSONObject toJson() {
