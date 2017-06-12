@@ -79,13 +79,13 @@ public class MoviesService extends JsonRestService {
     
     
     protected void validate(Request<JSONObject> request) throws ValidationException {
-        Result result = getSwaggerValidator().validate(request, true);
+        Result result = getSwaggerValidator(request).validate(request, true);
         if (result.isError())
             throw new ValidationException(result);
     }
     
-    protected SwaggerValidator getSwaggerValidator() {
-        SwaggerValidator val = new SwaggerValidator();
+    protected SwaggerValidator getSwaggerValidator(Request<JSONObject> request) {
+        SwaggerValidator val = new SwaggerValidator(request);
         val.addValidator(DecimalProperty.class, (json, property, path, strict) -> {
             if (property.getName().equals("rating")) {
                 BigDecimal value = json.getBigDecimal(property.getName());
