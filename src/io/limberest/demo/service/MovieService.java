@@ -32,7 +32,7 @@ public class MovieService extends MoviesService {
     @Override
     @ApiOperation(value="Retrieve a movie by {id}", response=Movie.class)
     @ApiImplicitParams({
-        @ApiImplicitParam(name="{id}", paramType="path", dataType="string", required=true)})
+        @ApiImplicitParam(name="id", paramType="path", dataType="string", required=true)})
     public Response<JSONObject> get(Request<JSONObject> request) throws ServiceException {
         
         validate(request);
@@ -48,7 +48,7 @@ public class MovieService extends MoviesService {
     @Override
     @ApiOperation(value="Update a movie.", response=StatusResponse.class)
     @ApiImplicitParams({
-        @ApiImplicitParam(name="{id}", paramType="path", dataType="string", required=true),
+        @ApiImplicitParam(name="id", paramType="path", dataType="string", required=true),
         @ApiImplicitParam(name="Movie", paramType="body", dataType="io.limberest.demo.model.Movie", required=true)})
     public Response<JSONObject> put(Request<JSONObject> request) throws ServiceException {
         
@@ -71,7 +71,7 @@ public class MovieService extends MoviesService {
     @Override
     @ApiOperation(value="Delete a movie.", response=StatusResponse.class)
     @ApiImplicitParams({
-        @ApiImplicitParam(name="{id}", paramType="path", dataType="string", required=true)})
+        @ApiImplicitParam(name="id", paramType="path", dataType="string", required=true)})
     public Response<JSONObject> delete(Request<JSONObject> request) throws ServiceException {
         
         validate(request);
