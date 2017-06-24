@@ -7,10 +7,14 @@ api:
 
 request:
   fallbackContentType:
-    get : application/json
+    get: application/json
   # TODO orderedKeys: true (default and current behavior is true)
   
 response:
   prettyIndent: 2
   # TODO orderedKeys: true (default and current behavior is true)
   
+tests:
+  location: c:\eclipse_workspace\limberest-demo\test
+  extensions:
+    - .postman
