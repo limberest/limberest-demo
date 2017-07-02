@@ -42,7 +42,7 @@
 			"response": []
 		},
 		{
-			"name": "movies/{{id}}",
+			"name": "movies/{id}",
 			"request": {
 				"url": "{{base-url}}/movies/{{id}}",
 				"method": "GET",
@@ -59,7 +59,7 @@
 			"response": []
 		},
 		{
-			"name": "movies?{{query}}",
+			"name": "movies?{query}",
 			"event": [
 				{
 					"listen": "test",
@@ -106,7 +106,18 @@
 			"response": []
 		},
 		{
-			"name": "movies/{{id}}",
+			"name": "movies/{id}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"variable_key\", \"variable_value\");"
+						]
+					}
+				}
+			],
 			"request": {
 				"url": "{{base-url}}/movies/{{id}}",
 				"method": "PUT",
@@ -131,9 +142,81 @@
 					"mode": "raw",
 					"raw": "{\n  \"credits\": [\n    {\n      \"name\": \"Dip\",\n      \"role\": \"director\"\n    },\n    {\n      \"name\": \"Rich\",\n      \"role\": \"actor\"\n    },\n    {\n      \"name\": \"Dale\",\n      \"role\": \"actor\"\n    }\n  ],\n  \"description\": \"I rate this PG, for Pretty Godawful.\",\n  \"id\": \"{{id}}\",\n  \"poster\": \"mvmt.jpg\",\n  \"rating\": 0.5,\n  \"title\": \"Movement\",\n  \"webRef\": {\n    \"ref\": \"tt000000\",\n    \"site\": \"imdb.com\"\n  },\n  \"year\": 2026\n}"
 				},
-				"description": ""
+				"description": "here's a description"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "1b95779a-5ef5-417b-8c78-f49e08e71ea6",
+					"name": "put example",
+					"originalRequest": {
+						"url": "{{base-url}}/movies/{{id}}",
+						"method": "PUT",
+						"header": [
+							{
+								"name": "Accept",
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": false,
+								"description": ""
+							},
+							{
+								"name": "Content-Type",
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false,
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"name": "Authorization",
+								"value": "Basic cmVndWxhcjpub3JvbGVzZm9ybWU=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"credits\": [\n    {\n      \"name\": \"Dip\",\n      \"role\": \"director\"\n    },\n    {\n      \"name\": \"Rich\",\n      \"role\": \"actor\"\n    },\n    {\n      \"name\": \"Dale\",\n      \"role\": \"actor\"\n    }\n  ],\n  \"description\": \"I rate this PG, for Pretty Godawful.\",\n  \"id\": \"{{id}}\",\n  \"poster\": \"mvmt.jpg\",\n  \"rating\": 0.5,\n  \"title\": \"Movement\",\n  \"webRef\": {\n    \"ref\": \"tt000000\",\n    \"site\": \"imdb.com\"\n  },\n  \"year\": 2026\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "69",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 01 Jul 2017 18:11:06 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Sun Jan 17 2038 06:14:07 GMT-0700 (Mountain Standard Time)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/mdw/",
+							"secure": false,
+							"value": "F08B40D570531F0F7084241EC5567C5B",
+							"key": "JSESSIONID"
+						}
+					],
+					"responseTime": 188,
+					"body": "{\"status\": {\n  \"code\": 200,\n  \"message\": \"Movie updated: 5c0a01b6\"\n}}"
+				}
+			]
 		},
 		{
 			"name": "movies",
@@ -166,7 +249,7 @@
 			"response": []
 		},
 		{
-			"name": "movies/{{id}}",
+			"name": "movies/{id}",
 			"request": {
 				"url": "{{base-url}}/movies/{{id}}",
 				"method": "DELETE",
