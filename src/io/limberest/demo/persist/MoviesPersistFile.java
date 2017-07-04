@@ -70,10 +70,12 @@ public class MoviesPersistFile implements Persist<Movie> {
     public Movie create(Movie movie) throws PersistException {
         synchronized(MoviesPersistFile.class) {
             load();
-            String id = generateId(movie);
+            String unique = movie.getTitle() + " (" + movie.getYear() + ")";
+            String id = Integer.toHexString(unique.hashCode());
             for (Movie m : _movies) {
                 if (m.getId().equals(id)) {
-                    throw new PersistException(Status.CONFLICT, "Movie already exists with id: " + id);
+                    throw new PersistException(Status.CONFLICT,
+                            "Movie already exists with id=" + id + ": " + m.getTitle() + " (" + m.getYear() + ")");
                 }
             }
             Movie newMovie = new Movie(id, movie);
@@ -157,10 +159,6 @@ public class MoviesPersistFile implements Persist<Movie> {
         catch (IOException ex) {
             throw new PersistException(ex.getMessage(), ex);
         }
-    }
-    
-    private String generateId(Movie movie) {
-        return Integer.toHexString(movie.toJson().toString().hashCode());
     }
     
     private static List<Movie> _movies;
