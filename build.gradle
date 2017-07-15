@@ -27,7 +27,7 @@ sourceSets {
 
 dependencies {
     
-    compile 'io.limberest:limberest:1.0.04'
+    compile 'io.limberest:limberest:1.0.06'
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
     compile 'com.google.guava:guava:21.0'
     compile 'org.reflections:reflections:0.9.10'
