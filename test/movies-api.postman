@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "limberest-demo",
+		"name": "movies-api",
 		"_postman_id": "e17085f3-45e3-5197-b8a1-f3fd3aeb0098",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -146,7 +146,7 @@
 			},
 			"response": [
 				{
-					"id": "40aadab3-8b93-4030-a190-c350a750ec64",
+					"id": "d33ab78c-9116-4bea-9d6e-c7a4c76cc5c5",
 					"name": "put example",
 					"originalRequest": {
 						"url": "{{base-url}}/movies/{{id}}",
