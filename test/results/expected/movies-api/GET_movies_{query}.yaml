@@ -1,6 +1,6 @@
 test: 'GET:movies?{query}'
 request:
-  url: 'https://limberest.io/demo/movies?year=1935&rating=5'
+  url: '${base-url}/movies?${query}'
   method: GET
   headers:
     Accept: application/json
