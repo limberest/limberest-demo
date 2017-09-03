@@ -41,7 +41,7 @@ response:
             }
           ],
           "description": "James Whale's poignant, horrifying, hilarious masterpiece demonstrates his genius and surpasses the original as a cathartic, visionary tour de force.",
-          "id": "f6b3c56c",
+          "id": "${~.*}",
           "poster": "tbof.jpg",
           "rating": 5,
           "title": "Bride of Frankenstein",
