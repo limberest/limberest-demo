@@ -1,6 +1,6 @@
 test: 'GET:movies?{query}'
 request:
-  url: '${base-url}/movies?${query}'
+  url: '${base-url}/movies?${query}'  # value expressions
   method: GET
   headers:
     Accept: application/json
@@ -41,7 +41,7 @@ response:
             }
           ],
           "description": "James Whale's poignant, horrifying, hilarious masterpiece demonstrates his genius and surpasses the original as a cathartic, visionary tour de force.",
-          "id": "${~.*}",
+          "id": "${~.*}",  # regular expression
           "poster": "tbof.jpg",
           "rating": 5,
           "title": "Bride of Frankenstein",
