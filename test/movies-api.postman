@@ -131,11 +131,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Basic cmVndWxhcjpub3JvbGVzZm9ybWU=",
-						"description": ""
 					}
 				],
 				"body": {
@@ -146,7 +141,7 @@
 			},
 			"response": [
 				{
-					"id": "d33ab78c-9116-4bea-9d6e-c7a4c76cc5c5",
+					"id": "ba8b37d6-ed73-4998-b482-5fc6f8b18480",
 					"name": "put example",
 					"originalRequest": {
 						"url": "{{base-url}}/movies/{{id}}",
@@ -233,11 +228,6 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Basic cmVndWxhcjpub3JvbGVzZm9ybWU=",
-						"description": ""
 					}
 				],
 				"body": {
@@ -257,11 +247,6 @@
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Authorization",
-						"value": "Basic ZGVsZXRlcjppYW1kZWxldGVy",
 						"description": ""
 					}
 				],
