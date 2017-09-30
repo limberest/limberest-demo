@@ -1,7 +1,0 @@
-{
-  "location": "https://raw.githubusercontent.com/limberest/limberest-demo/master/test",
-  "expectedResultLocation": "https://raw.githubusercontent.com/limberest/limberest-demo/master/test/results/expected",
-  "resultLocation": "../results/actual",
-  "debug": true,
-  "responseHeaders": ["content-type"]
-}
