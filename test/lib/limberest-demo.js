@@ -15,7 +15,7 @@ LimberestDemo.prototype.getOptions = function() {
   return {
     location: testsLoc,
     expectedResultLocation: testsLoc + '/results/expected',
-    resultLocation: '../../limberest-demo/test/results/actual',
+    resultLocation: '../results/actual',
     debug: true,
     responseHeaders: ['content-type']
   }
