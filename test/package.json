@@ -1,0 +1,17 @@
+{
+  "name": "limberest-demo-test",
+  "version": "1.0.0",
+  "description": "Test cases for limberest-demo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limberest/limberest-demo.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "limberest": "^1.0.8"
+  },  
+  "bugs": {
+    "url": "https://github.com/limberest/limberest-demo/issues"
+  },
+  "homepage": "https://limberest.io"
+}

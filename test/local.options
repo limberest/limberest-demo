@@ -1,0 +1,7 @@
+{
+  "location": "../../limberest-demo/test",
+  "expectedResultLocation": "../../limberest-demo/test/results/expected",
+  "resultLocation": "../../limberest-demo/test/results/actual",
+  "debug": true,
+  "responseHeaders": ["content-type"]
+}
