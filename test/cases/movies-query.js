@@ -6,11 +6,11 @@ const demo = require('../lib/limberest-demo');
 var options = demo.getOptions();
 
 // programmatically run a single test against limberest.io
-limberest.loadValues(options.location + '/limberest.io.values', function(err, vals) {
+limberest.loadValues(options.location + '/limberest.io.values', (err, vals) => {
   if (err)
     throw err;
   var values = Object.assign({}, vals);
-  limberest.loadGroup(options.location + '/movies-api.postman', function(err, group) {
+  limberest.loadGroup(options.location + '/movies-api.postman', (err, group) => {
     if (err)
       throw err;
     var test = group.getTest('GET', 'movies?{query}');

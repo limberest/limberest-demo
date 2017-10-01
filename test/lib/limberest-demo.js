@@ -6,7 +6,7 @@ function LimberestDemo() {
 }
 
 // Returns options as appropriate for browser vs local. 
-LimberestDemo.prototype.getOptions = function() {
+LimberestDemo.prototype.getOptions = () => {
   var testsLoc = '..';
   if (typeof window !== 'undefined') {
     // in browser
