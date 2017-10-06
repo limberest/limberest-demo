@@ -27,6 +27,7 @@ LimberestDemo.prototype.getOptions = function() {
 
 LimberestDemo.prototype.getAuthValues = function(options, callback) {
   if (this.isBrowser()) {
+    // auth handled by browser or in client code (eg: TestAccess.js in limberest-ui)
     callback();
   }
   else {
@@ -59,6 +60,7 @@ LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
               var test = group.getTest('DELETE', 'movies/{id}');
               if (!test.request.headers)
                 test.request.headers = {};
+              // TODO: handle other than Basic
               test.request.headers.Authorization = 'Basic ' + authHeader;
               values.id = id;
               test.run(options, values, (err, response) => {

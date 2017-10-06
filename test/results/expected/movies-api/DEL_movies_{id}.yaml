@@ -1,0 +1,19 @@
+test: 'DEL:movies/{id}'
+request:
+  url: 'https://limberest.io/demo/movies/${id}'
+  method: DELETE
+  headers:
+    Accept: application/json
+response:
+  status:
+    code: 404
+    message: Not Found
+  headers:
+    content-type: application/json;charset=ISO-8859-1
+  body: |-
+    {
+      "status": {
+        "code": 404,
+        "message": "Movie not found with id: {$id}"
+      }
+    }
