@@ -33,6 +33,7 @@ request:
           "role": "actor"
         }
       ],
+      "id": "${id}",
       "poster": "cothd.jpg",
       "rating": 4,
       "title": "The Case of the Howling Dog",
