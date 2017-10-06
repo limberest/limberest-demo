@@ -1,9 +1,16 @@
 'use strict';
 
-// example limberest-js test case
-var limberest = require('limberest');
+const limberest = require('../../../limberest-js/lib/limberest');
+const demo = require('../lib/limberest-demo');
 
-var env = limberest.env('../limberest.io.env');
+var options = demo.getOptions();
 
-var group =  limberest.group('../limberest-demo.postman');
-var resp = limberest.run(group.api-docs);
+var movieId = '435b30ad';
+
+demo.cleanupMovie(movieId, err => {
+  if (err) {
+    console.log('Error: ' + err);
+  }
+  else {
+  }
+});
