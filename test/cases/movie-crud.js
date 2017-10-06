@@ -7,10 +7,11 @@ var options = demo.getOptions();
 
 var movieId = '435b30ad';
 
-demo.cleanupMovie(movieId, err => {
+demo.cleanupMovie(Object.assign({}, options, {debug: false}), movieId, (err, response) => {
   if (err) {
     console.log('Error: ' + err);
   }
   else {
+    console.log('Cleanup response status: ' + response.status.code);
   }
 });

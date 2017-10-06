@@ -5,10 +5,14 @@ const limberest = require('../../../limberest-js/lib/limberest');
 function LimberestDemo() {
 }
 
+LimberestDemo.prototype.isBrowser = function() {
+  return (typeof window !== 'undefined');  
+};
+
 // Returns options as appropriate for browser vs local. 
 LimberestDemo.prototype.getOptions = function() {
   var testsLoc = '..';
-  if (typeof window !== 'undefined') {
+  if (this.isBrowser()) {
     // in browser
     testsLoc = 'https://raw.githubusercontent.com/limberest/limberest-demo/master/test';
   }
@@ -21,11 +25,20 @@ LimberestDemo.prototype.getOptions = function() {
   }
 };
 
-LimberestDemo.prototype.cleanupMovie = function(id, callback) {
-  var options = this.getOptions();
+LimberestDemo.prototype.getAuthValues = function(options, callback) {
+  if (this.isBrowser()) {
+    callback();
+  }
+  else {
+    limberest.loadValues(options.location + '/auth.values', (err, authVals) => {
+      callback(err, authVals);
+    });
+  }
+};
 
+LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
   // authentication
-  limberest.loadValues(options.location + '/auth.values', (err, authVals) => {
+  this.getAuthValues(options, (err, authVals) => {
     if (err) {
       callback(err);
     }
