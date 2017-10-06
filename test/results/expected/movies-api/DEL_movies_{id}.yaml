@@ -14,6 +14,6 @@ response:
     {
       "status": {
         "code": 404,
-        "message": "Movie not found with id: {$id}"
+        "message": "Movie not found with id: ${id}"
       }
     }
