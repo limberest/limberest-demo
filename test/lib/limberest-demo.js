@@ -44,7 +44,9 @@ LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
       callback(err);
     }
     else {
-      var authHeader = new Buffer(authVals.user + ':' + authVals.password).toString('base64');
+      var authHeader = null;
+      if (authVals)
+        authHeader = new Buffer(authVals.user + ':' + authVals.password).toString('base64');
       // programmatically run a single test against limberest.io
       limberest.loadValues(options.location + '/limberest.io.values', (err, vals) => {
         if (err) {
@@ -61,7 +63,8 @@ LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
               if (!test.request.headers)
                 test.request.headers = {};
               // TODO: handle other than Basic
-              test.request.headers.Authorization = 'Basic ' + authHeader;
+              if (authHeader)
+                test.request.headers.Authorization = 'Basic ' + authHeader;
               values.id = id;
               test.run(options, values, (err, response) => {
                 if (err) {
