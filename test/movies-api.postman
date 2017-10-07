@@ -24,22 +24,6 @@
 			"response": []
 		},
 		{
-			"name": "movies",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": "{{base-url}}/movies",
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "movies/{id}",
 			"request": {
 				"method": "GET",
@@ -133,7 +117,7 @@
 			},
 			"response": [
 				{
-					"id": "4a5d1921-7b02-4a1e-ab87-b7b0394b23e0",
+					"id": "23659e7e-b470-4487-9389-319bd713a3cd",
 					"name": "put example",
 					"originalRequest": {
 						"method": "PUT",
