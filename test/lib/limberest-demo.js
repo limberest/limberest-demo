@@ -40,16 +40,33 @@ LimberestDemo.prototype.getAuth = function(options, callback) {
   }
 };
 
+// TODO: other than Basic
+LimberestDemo.prototype.getAuthHeader = function(callback) {
+  this.getAuth(this.getOptions(), (err, auth) => {
+    if (err) {
+      callback(err);
+    }
+    else if (auth) {
+      if (this.isBrowser()) {
+        return 'Basic ' + btoa(auth.user + ':' + auth.password);
+      }
+      else {
+        return 'Basic ' + new Buffer(auth.user + ':' + auth.password).toString('base64');
+      }
+    }
+    else {
+      callback();
+    }
+  });
+}
+
 LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
   // authentication
-  this.getAuth(options, (err, auth) => {
+  this.getAuthHeader((err, authHeader) => {
     if (err) {
       callback(err);
     }
     else {
-      var authHeader = null;
-      if (auth)
-        authHeader = new Buffer(auth.user + ':' + auth.password).toString('base64');
       // programmatically run a single test against limberest.io
       limberest.loadValues(options.location + '/limberest.io.values', (err, vals) => {
         if (err) {
@@ -65,9 +82,8 @@ LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
               var test = group.getTest('DELETE', 'movies/{id}');
               if (!test.request.headers)
                 test.request.headers = {};
-              // TODO: handle other than Basic
               if (authHeader)
-                test.request.headers.Authorization = 'Basic ' + authHeader;
+                test.request.headers.Authorization = authHeader;
               values.id = id;
               test.run(options, values, (err, response) => {
                 if (err) {
