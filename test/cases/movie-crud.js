@@ -16,5 +16,7 @@ demo.cleanupMovie(Object.assign({}, options, {debug: false}), movieId, (err, res
   }
   else {
     testCase.logger.info('Cleanup response status: ' + response.status.code);
+    testCase.authHeader = demo.getAuthHeader();
+    
   }
 });
