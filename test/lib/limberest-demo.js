@@ -25,28 +25,31 @@ LimberestDemo.prototype.getOptions = function() {
   }
 };
 
-LimberestDemo.prototype.getAuthValues = function(options, callback) {
+LimberestDemo.prototype.setAuth = function(auth) {
+  this.auth = auth;
+}
+LimberestDemo.prototype.getAuth = function(options, callback) {
   if (this.isBrowser()) {
-    // auth handled by browser or in client code (eg: TestAccess.js in limberest-ui)
-    callback();
+    // setAuth called from limberest-ui client code
+    callback(this.auth);
   }
   else {
-    limberest.loadValues(options.location + '/auth.values', (err, authVals) => {
-      callback(err, authVals);
+    limberest.loadValues(options.location + '/auth.values', (err, auth) => {
+      callback(err, auth);
     });
   }
 };
 
 LimberestDemo.prototype.cleanupMovie = function(options, id, callback) {
   // authentication
-  this.getAuthValues(options, (err, authVals) => {
+  this.getAuth(options, (err, auth) => {
     if (err) {
       callback(err);
     }
     else {
       var authHeader = null;
-      if (authVals)
-        authHeader = new Buffer(authVals.user + ':' + authVals.password).toString('base64');
+      if (auth)
+        authHeader = new Buffer(auth.user + ':' + auth.password).toString('base64');
       // programmatically run a single test against limberest.io
       limberest.loadValues(options.location + '/limberest.io.values', (err, vals) => {
         if (err) {
