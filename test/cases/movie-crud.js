@@ -7,11 +7,14 @@ var options = demo.getOptions();
 
 var movieId = '435b30ad';
 
+const Case = limberest.Case;
+var testCase = new Case('movie-crud', options);
+
 demo.cleanupMovie(Object.assign({}, options, {debug: false}), movieId, (err, response) => {
   if (err) {
-    console.log('Error: ' + err);
+    testCase.logger.error('Cleanup error: ' + err);
   }
   else {
-    console.log('Cleanup response status: ' + response.status.code);
+    testCase.logger.info('Cleanup response status: ' + response.status.code);
   }
 });
