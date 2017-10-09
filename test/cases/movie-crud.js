@@ -12,9 +12,11 @@ var logger = testCase.logger;
 
 // programmatically run an orchestrated sequence of tests
 limberest.loadValues(options, valuesFiles, (err, vals) => {
-  if (err)
+  if (err) {
     logger.error(err);
-
+    return;
+  }
+  
   var values = Object.assign({}, vals);
   
   demo.cleanupMovie(values, (err, response) => {

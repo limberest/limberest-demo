@@ -33,7 +33,8 @@ LimberestDemo.prototype.getOptions = function() {
     debug: true,
     responseHeaders: ['content-type'],
     retainResult: true,
-    path: path
+    path: path,
+    extensions: ['env', 'values']
   }
 };
 
