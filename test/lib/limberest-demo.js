@@ -12,9 +12,12 @@ LimberestDemo.prototype.isBrowser = function() {
 // Returns options as appropriate for browser vs local. 
 LimberestDemo.prototype.getOptions = function() {
   var testsLoc = '..';
+  var path = null;
+  
   if (this.isBrowser()) {
     // in browser
-    testsLoc = 'https://raw.githubusercontent.com/limberest/limberest-demo/master/test';
+    testsLoc = 'https://github.com/limberest/limberest-demo';
+    path = 'test';
   }
   return {
     location: testsLoc,
@@ -22,7 +25,8 @@ LimberestDemo.prototype.getOptions = function() {
     resultLocation: '../results/actual',
     debug: true,
     responseHeaders: ['content-type'],
-    retainResult: true
+    retainResult: true,
+    path: path
   }
 };
 
