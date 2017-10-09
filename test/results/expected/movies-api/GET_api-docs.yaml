@@ -1,6 +1,6 @@
 test: 'GET:api-docs'
 request:
-  url: 'https://limberest.io/demo/api-docs'
+  url: '${base-url}/api-docs'
   method: GET
   headers:
     Accept: application/json

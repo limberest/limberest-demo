@@ -6,9 +6,8 @@ const demo = require('../lib/limberest-demo');
 var options = demo.getOptions();
 var valuesFiles = ['global.values', 'limberest.io.values'];
 
-const Case = limberest.Case;
-var testCase = new Case('movie-crud', options);
-var logger = testCase.logger;
+var caseName = 'movie-crud';
+var logger = demo.getLogger('movies-api', caseName);
 
 // programmatically run an orchestrated sequence of tests
 limberest.loadValues(options, valuesFiles, (err, vals) => {
@@ -21,17 +20,20 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
   
   demo.cleanupMovie(values, (err, response) => {
     if (err) {
-      logger.error('Cleanup error: ' + err);
+      logger.error(err);
     }
     else {
       logger.info('Cleanup completed for: ' + values.id);
-      testCase.authHeader = demo.getAuthHeader();
       
       limberest.loadGroup(options.location + '/movies-api.postman', (err, group) => {
         if (err) {
           logger.error(err);
         }
         else {
+          // start a new case
+          var testCase = new limberest.Case(caseName, options);
+          testCase.authHeader = demo.getAuthHeader();
+
           // create a movie
           var post = group.getTest('POST', 'movies');
           testCase.run(post, values, (err, response) => {
@@ -51,6 +53,8 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
                         testCase.run(get, values, (err, response) => {
                           // verify results
                           var res = testCase.verify(values, (err, result) => {
+                            if (err)
+                              logger.error(err);
                           });
                         });
                       });

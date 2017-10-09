@@ -1,6 +1,7 @@
 'use strict';
 
 const limberest = require('../../../limberest-js/lib/limberest');
+const Logger = limberest.Logger;
 
 function LimberestDemo() {
 }
@@ -21,10 +22,9 @@ LimberestDemo.prototype.getOptions = function() {
   var testsLoc = '..';
   var path = null;
   
-  if (this.isBrowser()) {
+  if (this.isRemote()) {
     // in browser
-    testsLoc = 'https://github.com/limberest/limberest-demo';
-    path = 'test';
+    testsLoc = 'https://raw.githubusercontent.com/limberest/limberest-demo/master/test';
   }
   return {
     location: testsLoc,
@@ -33,7 +33,7 @@ LimberestDemo.prototype.getOptions = function() {
     debug: true,
     responseHeaders: ['content-type'],
     retainResult: true,
-    path: path,
+    retainLog: true,
     extensions: ['env', 'values']
   }
 };
@@ -103,6 +103,17 @@ LimberestDemo.prototype.cleanupMovie = function(values, callback) {
   catch (err) {
     callback(err);
   }
+};
+
+LimberestDemo.prototype.getLogger = function(group, caseName) {
+  var options = this.getOptions();
+  return new Logger({
+    level: options.debug ? 'debug' : 'info',
+    location: options.resultLocation + '/' + group,
+    name: caseName + '.log', 
+    retain: false
+  });
+  
 };
 
 module.exports = new LimberestDemo();

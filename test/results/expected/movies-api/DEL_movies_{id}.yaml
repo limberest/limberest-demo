@@ -1,6 +1,6 @@
 test: 'DEL:movies/{id}'
 request:
-  url: 'https://limberest.io/demo/movies/${id}'
+  url: '${base-url}/movies/${id}'
   method: DELETE
   headers:
     Accept: application/json

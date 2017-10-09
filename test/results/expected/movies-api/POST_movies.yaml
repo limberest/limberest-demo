@@ -1,6 +1,6 @@
 test: 'POST:movies'
 request:
-  url: 'https://limberest.io/demo/movies'
+  url: '${base-url}/movies'
   method: POST
   headers:
     Accept: application/json

@@ -1,6 +1,6 @@
 test: 'GET:movies/{id}'
 request:
-  url: 'https://limberest.io/demo/movies/${id}'
+  url: '${base-url}/movies/${id}'
   method: GET
   headers:
     Accept: application/json
