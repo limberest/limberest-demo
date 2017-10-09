@@ -16,7 +16,7 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
     logger.error(err);
 
   var values = Object.assign({}, vals);
-
+  
   demo.cleanupMovie(values, (err, response) => {
     if (err) {
       logger.error('Cleanup error: ' + err);

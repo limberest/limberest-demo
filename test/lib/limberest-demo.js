@@ -9,6 +9,13 @@ LimberestDemo.prototype.isBrowser = function() {
   return (typeof window !== 'undefined');  
 };
 
+LimberestDemo.prototype.setRemote = function(remote) {
+  this.remote = remote;
+}
+LimberestDemo.prototype.isRemote = function() {
+  return this.remote || this.isBrowser();
+}
+
 // Returns options as appropriate for browser vs local. 
 LimberestDemo.prototype.getOptions = function() {
   var testsLoc = '..';
