@@ -42,6 +42,13 @@ LimberestDemo.prototype.getAuth = function(options) {
   }
 };
 
+LimberestDemo.prototype.setCallback = function(callback) {
+  this.callback = callback;
+};
+LimberestDemo.prototype.getCallback = function() {
+  return this.callback;
+};
+
 // TODO: other than Basic
 LimberestDemo.prototype.getAuthHeader = function() {
   var auth = this.getAuth(this.getOptions());
