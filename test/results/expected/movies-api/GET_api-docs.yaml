@@ -156,7 +156,7 @@ response:
               }
             ],
             "tags": [
-              "limberest demo movies"
+              "Limberest Demo Movies"
             ]
           },
           "get": {
@@ -253,7 +253,7 @@ response:
               }
             ],
             "tags": [
-              "limberest demo movies"
+              "Limberest Demo Movies"
             ]
           }
         },

@@ -121,7 +121,7 @@ request:
       ],
       "id": "${id}",
       "poster": "cothd.jpg",
-      "rating": 4,
+      "rating": ${rating},
       "title": "The Case of the Howling Dog",
       "webRef": {
         "ref": "tt0024958",
@@ -184,7 +184,7 @@ response:
       ],
       "id": "${id}",
       "poster": "cothd.jpg",
-      "rating": 4,
+      "rating": ${rating},
       "title": "The Case of the Howling Dog",
       "webRef": {
         "ref": "tt0024958",

@@ -38,7 +38,8 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
           var post = group.getTest('POST', 'movies');
           testCase.run(post, values, (err, response) => {
             if (!err) {
-              // update it
+              // update it (with programmatically-set rating)
+              values.rating = 4.5;
               var put = group.getTest('PUT', 'movies/{id}');
               testCase.run(put, values, (err, response) => {
                 if (!err) {
