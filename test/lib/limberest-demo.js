@@ -1,7 +1,7 @@
 'use strict';
 
-const limberest = require('limberest');
-// const limberest = require('../../../limberest-js/lib/limberest');
+// const limberest = require('limberest');
+const limberest = require('../../../limberest-js/lib/limberest');
 const Logger = limberest.Logger;
 
 function LimberestDemo() {
@@ -32,7 +32,7 @@ LimberestDemo.prototype.getOptions = function() {
     expectedResultLocation: testsLoc + '/results/expected',
     resultLocation: '../results/actual',
     debug: true,
-    responseHeaders: ['content-type'],
+    responseHeaders: ['content-type', 'location'],
     retainResult: true,
     retainLog: true,
     extensions: ['env', 'values']

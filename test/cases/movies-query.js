@@ -31,7 +31,7 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
       // create a movie
       var get = group.getTest('GET', 'movies?{query}');
       // change query
-      values.query='year=1931&rating=>4';
+      values.query='year=1931&rating=>=4';
       testCase.run(get, values, (err, response) => {
         if (!err) {
           // verify results

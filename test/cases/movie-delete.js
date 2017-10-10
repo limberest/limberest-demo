@@ -7,7 +7,7 @@ const demo = require('../lib/limberest-demo');
 var options = demo.getOptions();
 var valuesFiles = ['global.values', 'limberest.io.values'];
 
-var caseName = 'movie-create';
+var caseName = 'movie-delete';
 var logger = demo.getLogger('movies-api', caseName);
 
 // programmatically run an orchestrated sequence of tests
@@ -29,8 +29,8 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
       testCase.authHeader = demo.getAuthHeader();
 
       // create a movie
-      var post = group.getTest('POST', 'movies');
-      testCase.run(post, values, (err, response) => {
+      var del = group.getTest('DELETE', 'movies/{id}');
+      testCase.run(del, values, (err, response) => {
         if (!err) {
           // verify results
           var res = testCase.verify(values, (err, result) => {
