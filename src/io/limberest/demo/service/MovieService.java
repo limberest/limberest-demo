@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
  * Extends {@link MoviesService} for paths qualified by movie ID.
  */
 @Path(value="/movies/{id}" )
-@Api("limberest demo movie")
+@Api("Limberest Demo Movie")
 public class MovieService extends MoviesService {
 
     /**

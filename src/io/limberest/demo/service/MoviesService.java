@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.models.properties.DecimalProperty;
 
 @Path("/movies")
-@Api("limberest demo movies")
+@Api("Limberest Demo Movies")
 public class MoviesService extends JsonRestService {
 
     @ApiOperation(value="Retrieve movies",
