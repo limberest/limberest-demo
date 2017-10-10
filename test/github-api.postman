@@ -1,0 +1,44 @@
+{
+	"variables": [],
+	"info": {
+		"name": "github-api",
+		"_postman_id": "adf56ad6-3f1f-7123-e10a-d6779002bbd8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api list tests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://api.github.com/repos/limberest/limberest-demo/contents/test",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "rate_limit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://api.github.com/rate_limit",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "mdw-demo commit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://api.github.com/repos/CenturyLinkCloud/mdw-demo/commits/52c7b84",
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
