@@ -63,7 +63,9 @@ public class MoviesService extends JsonRestService {
         validate(request);
         
         Movie movie = getPersist().create(new Movie(request.getBody()));
-        return new Response<>(Status.CREATED, movie.toJson());
+        Response<JSONObject> response = new Response<>(Status.CREATED, movie.toJson());
+        response.getHeaders().put("Location", request.getBase() + "/movies/" + movie.getId());
+        return response;
     }
 
     /**

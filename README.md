@@ -12,8 +12,9 @@
     ```
     git clone https://github.com/limberest/limberest-demo.git
     ```
-  - Build using gradle:
+  - Build using Gradle:
     ```
     cd limberest-demo
     gradle build
     ```
+  - TODO: instructions for Spring Boot deploy

@@ -5,9 +5,9 @@ const limberest = require('../../../limberest-js/lib/limberest');
 const demo = require('../lib/limberest-demo');
 
 var options = demo.getOptions();
-var valuesFiles = ['global.values', 'limberest.io.values'];
+var valuesFiles = ['global.values', 'localhost.values'];
 
-var caseName = 'movies-query';
+var caseName = 'movie-create';
 var logger = demo.getLogger('movies-api', caseName);
 
 // programmatically run an orchestrated sequence of tests
@@ -29,10 +29,8 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
       testCase.authHeader = demo.getAuthHeader();
 
       // create a movie
-      var get = group.getTest('GET', 'movies?{query}');
-      // change query
-      values.query='year=1931&rating=>4';
-      testCase.run(get, values, (err, response) => {
+      var post = group.getTest('POST', 'movies');
+      testCase.run(post, values, (err, response) => {
         if (!err) {
           // verify results
           var res = testCase.verify(values, (err, result) => {
