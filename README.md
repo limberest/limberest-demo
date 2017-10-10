@@ -4,8 +4,8 @@
 ## Sample API Implementation and Autotests
 
 ### Via the UI:
-  - https://limberest.io/ui/
-    <https://github.com/limberest/limberest-ui>
+  - https://limberest.io/ui/<br>
+    (<https://github.com/limberest/limberest-ui>)
 
 ### Running Locally:
   - Clone from GitHub:
