@@ -46,7 +46,7 @@ response:
     code: 201
     message: Created
   headers:
-    content-type: application/json,
+    content-type: application/json
     location: 'https://limberest.io/demo/movies/435b30ad'
   body: |-
     {
