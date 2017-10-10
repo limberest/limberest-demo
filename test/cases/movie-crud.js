@@ -57,7 +57,7 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
                             if (err)
                               logger.error(err);
                             if (demo.getCallback())
-                              demo.getCallback()(err, result);
+                              demo.getCallback()(err, result, values);
                           });
                         });
                       });
