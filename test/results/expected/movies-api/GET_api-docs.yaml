@@ -277,7 +277,7 @@ response:
               }
             ],
             "tags": [
-              "limberest demo movie"
+              "Limberest Demo Movie"
             ]
           },
           "delete": {
@@ -299,7 +299,7 @@ response:
               }
             ],
             "tags": [
-              "limberest demo movie"
+              "Limberest Demo Movie"
             ]
           },
           "put": {
@@ -329,7 +329,7 @@ response:
               }
             ],
             "tags": [
-              "limberest demo movie"
+              "Limberest Demo Movie"
             ]
           }
         }
