@@ -110,14 +110,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"credits\": [\r\n    {\r\n      \"name\": \"Alan Crosland\",\r\n      \"role\": \"director\"\r\n    },\r\n    {\r\n      \"name\": \"Warren William\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Mary Astor\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Allen Jenkins\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Grant Mitchell\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Helen Trenholme\",\r\n      \"role\": \"actor\"\r\n    }\r\n  ],\r\n  \"id\": \"{{id}}\",\r\n  \"poster\": \"cothd.jpg\",\r\n  \"rating\": 4,\r\n  \"title\": \"The Case of the Howling Dog\",\r\n  \"webRef\": {\r\n    \"ref\": \"tt0024958\",\r\n    \"site\": \"imdb.com\"\r\n  },\r\n  \"year\": 1934\r\n}\r\n"
+					"raw": "{\r\n  \"credits\": [\r\n    {\r\n      \"name\": \"Alan Crosland\",\r\n      \"role\": \"director\"\r\n    },\r\n    {\r\n      \"name\": \"Warren William\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Mary Astor\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Allen Jenkins\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Grant Mitchell\",\r\n      \"role\": \"actor\"\r\n    },\r\n    {\r\n      \"name\": \"Helen Trenholme\",\r\n      \"role\": \"actor\"\r\n    }\r\n  ],\r\n  \"id\": \"{{id}}\",\r\n  \"poster\": \"cothd.jpg\",\r\n  \"rating\": {{rating}},\r\n  \"title\": \"The Case of the Howling Dog\",\r\n  \"webRef\": {\r\n    \"ref\": \"tt0024958\",\r\n    \"site\": \"imdb.com\"\r\n  },\r\n  \"year\": 1934\r\n}\r\n"
 				},
 				"url": "{{base-url}}/movies/{{id}}",
 				"description": "here's a description"
 			},
 			"response": [
 				{
-					"id": "08c6426f-35d5-4480-99c5-039bb0b92f7c",
+					"id": "918af575-2cd6-468c-a2f2-a62f342b18d3",
 					"name": "put example",
 					"originalRequest": {
 						"method": "PUT",
