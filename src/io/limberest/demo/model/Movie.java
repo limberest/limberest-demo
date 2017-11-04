@@ -85,7 +85,7 @@ public class Movie extends Item implements Jsonable {
     }
 
     @Override
-    public String getJsonName() {
+    public String jsonName() {
         return "movie";
     }    
 }

@@ -5,7 +5,7 @@ plugins {
 
 jar {
     baseName = 'limberest-demo'
-    version =  '1.0.10'
+    version =  '1.0.12'
 }
 
 repositories {
@@ -27,7 +27,7 @@ sourceSets {
 
 dependencies {
     
-    compile 'io.limberest:limberest:1.0.09'
+    compile 'io.limberest:limberest:1.0.12'
     // compile files('c:/eclipse_workspace/limberest/build/classes')
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
     compile 'com.google.guava:guava:21.0'
