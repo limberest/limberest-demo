@@ -79,12 +79,12 @@ LimberestDemo.prototype.cleanupMovie = function(values, callback) {
         callback(err);
       }
       else {
-        var test = group.getTest('DELETE', 'movies/{id}');
-        if (!test.request.headers)
-          test.request.headers = {};
+        var request = group.getRequest('DELETE', 'movies/{id}');
+        if (!request.headers)
+          request.headers = {};
         if (authHeader)
-          test.request.headers.Authorization = authHeader;
-        test.run(options, values, (err, response) => {
+          request.headers.Authorization = authHeader;
+        request.run(options, values, (err, response) => {
           if (err) {
             callback(err);
           }
