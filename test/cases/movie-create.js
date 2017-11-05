@@ -29,7 +29,7 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
       testCase.authHeader = demo.getAuthHeader();
 
       // create a movie
-      var post = group.getTest('POST', 'movies');
+      var post = group.getRequest('POST', 'movies');
       testCase.run(post, values, (err, response) => {
         if (!err) {
           // verify results

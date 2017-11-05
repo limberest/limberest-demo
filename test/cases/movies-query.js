@@ -29,7 +29,7 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
       testCase.authHeader = demo.getAuthHeader();
 
       // create a movie
-      var get = group.getTest('GET', 'movies?{query}');
+      var get = group.getRequest('GET', 'movies?{query}');
       // change query
       values.query='year=1931&rating=>=4';
       testCase.run(get, values, (err, response) => {

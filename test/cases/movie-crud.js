@@ -36,20 +36,20 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
           testCase.authHeader = demo.getAuthHeader();
 
           // create a movie
-          var post = group.getTest('POST', 'movies');
+          var post = group.getRequest('POST', 'movies');
           testCase.run(post, values, (err, response) => {
             if (!err) {
               // update it (with programmatically-set rating)
               values.rating = 4.5;
-              var put = group.getTest('PUT', 'movies/{id}');
+              var put = group.getRequest('PUT', 'movies/{id}');
               testCase.run(put, values, (err, response) => {
                 if (!err) {
                   // confirm update
-                  var get = group.getTest('GET', 'movies/{id}');
+                  var get = group.getRequest('GET', 'movies/{id}');
                   testCase.run(get, values, (err, response) => {
                     if (!err) {
                       // delete it
-                      var del = group.getTest('DELETE', 'movies/{id}');
+                      var del = group.getRequest('DELETE', 'movies/{id}');
                       testCase.run(del, values, (err, response) => {
                         // confirm delete
                         testCase.run(get, values, (err, response) => {

@@ -29,7 +29,7 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
       testCase.authHeader = demo.getAuthHeader();
 
       // create a movie
-      var del = group.getTest('DELETE', 'movies/{id}');
+      var del = group.getRequest('DELETE', 'movies/{id}');
       testCase.run(del, values, (err, response) => {
         if (!err) {
           // verify results
