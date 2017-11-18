@@ -17,4 +17,4 @@
     cd limberest-demo
     gradle build
     ```
-  - TODO: instructions for Spring Boot deploy
+  - TODO: instructions for Spring Boot deploy and Docker deploy
