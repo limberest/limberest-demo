@@ -1,4 +1,4 @@
-test: movie-create  # TODO: regex example
+test: movie-create  # TODO: regex
 request:
   url: '${base-url}/movies'
   method: POST
