@@ -1,7 +1,5 @@
 'use strict';
 
-// TODO: convert to promise syntax
-
 // const limberest = require('limberest');
 const limberest = require('../../../limberest-js/lib/limberest');
 const demo = require('../lib/limberest-demo');
@@ -13,6 +11,7 @@ var caseName = 'movie-create';
 var logger = demo.getLogger('movies-api', caseName);
 
 // programmatically run an orchestrated sequence of tests
+// TODO: convert to promise syntax
 limberest.loadValues(options, valuesFiles, (err, vals) => {
   if (err) {
     logger.error(err);
