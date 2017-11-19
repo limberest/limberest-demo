@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO: convert to promise syntax
+
 // const limberest = require('limberest');
 const limberest = require('../../../limberest-js/lib/limberest');
 const demo = require('../lib/limberest-demo');
