@@ -11,7 +11,7 @@ var caseName = 'movie-create';
 var logger = demo.getLogger('movies-api', caseName);
 
 // programmatically run an orchestrated sequence of tests
-// TODO: use promise syntax
+// TODO: use js promise syntax
 limberest.loadValues(options, valuesFiles, (err, vals) => {
   if (err) {
     logger.error(err);
