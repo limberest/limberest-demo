@@ -1,4 +1,4 @@
-test: 'POST:movies'
+test: 'POST:movies' # TODO: regex example
 request:
   url: '${base-url}/movies'
   method: POST
