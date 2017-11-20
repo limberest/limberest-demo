@@ -15,13 +15,10 @@
           {
             "key": "Accept",
             "value": "application/json"
-          },
-          {
-            "key": "Content-Type",
-            "value": "application/json"
           }
         ],
-        "url": "${base-url}/api-docsx",
+        "body": {},
+        "url": "{{base-url}}/api-docs",
         "description": ""
       },
       "response": []
