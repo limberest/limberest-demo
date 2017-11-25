@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "movies-api",
-		"_postman_id": "d6cedd03-ffde-7b3e-52ff-a36e5b7fe0a7",
+		"_postman_id": "0119cd8f-e28a-f236-e341-fc613b4f1786",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -19,11 +19,14 @@
 						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "${base-url}/api-docs",
+					"raw": "{{base-url}}/api-docs",
 					"host": [
-						"${base-url}"
+						"{{base-url}}"
 					],
 					"path": [
 						"api-docs"
@@ -40,8 +43,6 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Body is correct\"] = responseBody === \"response_body_string\";",
-							"",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;"
 						]
 					}
@@ -55,9 +56,12 @@
 						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "{{base-url}}/movies?{{query}}",
+					"raw": "{{base-url}}/movies?{{query}}=",
 					"host": [
 						"{{base-url}}"
 					],
@@ -107,17 +111,6 @@
 		},
 		{
 			"name": "movies/{id}",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"postman.setEnvironmentVariable(\"variable_key\", \"variable_value\");"
-						]
-					}
-				}
-			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -143,81 +136,9 @@
 						"movies",
 						"{{id}}"
 					]
-				},
-				"description": "here's a description"
-			},
-			"response": [
-				{
-					"id": "e71793e1-00b1-48a7-91ef-b29967f5e715",
-					"name": "put example",
-					"originalRequest": {
-						"method": "PUT",
-						"header": [
-							{
-								"name": "Accept",
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"name": "Content-Type",
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"credits\": [\n    {\n      \"name\": \"Dip\",\n      \"role\": \"director\"\n    },\n    {\n      \"name\": \"Rich\",\n      \"role\": \"actor\"\n    },\n    {\n      \"name\": \"Dale\",\n      \"role\": \"actor\"\n    }\n  ],\n  \"description\": \"I rate this PG, for Pretty Godawful.\",\n  \"id\": \"{{id}}\",\n  \"poster\": \"mvmt.jpg\",\n  \"rating\": 0.5,\n  \"title\": \"Movement\",\n  \"webRef\": {\n    \"ref\": \"tt000000\",\n    \"site\": \"imdb.com\"\n  },\n  \"year\": 2026\n}"
-						},
-						"url": {
-							"raw": "{{base-url}}/movies/{{id}}",
-							"host": [
-								"{{base-url}}"
-							],
-							"path": [
-								"movies",
-								"{{id}}"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"_postman_previewtype": "text",
-					"header": [
-						{
-							"key": "Content-Length",
-							"value": "69",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 01 Jul 2017 18:11:06 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						}
-					],
-					"cookie": [
-						{
-							"expires": "Invalid Date",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/mdw/",
-							"secure": false,
-							"value": "F08B40D570531F0F7084241EC5567C5B",
-							"key": "JSESSIONID"
-						}
-					],
-					"responseTime": 188,
-					"body": "{\"status\": {\n  \"code\": 200,\n  \"message\": \"Movie updated: 5c0a01b6\"\n}}"
 				}
-			]
+			},
+			"response": []
 		},
 		{
 			"name": "movies/{id}",
