@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "movies-api",
-		"_postman_id": "0119cd8f-e28a-f236-e341-fc613b4f1786",
+		"_postman_id": "13c7f556-cdae-41cd-297b-4c7bdced3ca0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -37,17 +37,6 @@
 		},
 		{
 			"name": "movies?{query}",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -56,7 +45,10 @@
 						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{base-url}}/movies?{{query}}",
 					"host": [
