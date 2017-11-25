@@ -56,12 +56,9 @@
 						"value": "application/json"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
-					"raw": "{{base-url}}/movies?{{query}}=",
+					"raw": "{{base-url}}/movies?{{query}}",
 					"host": [
 						"{{base-url}}"
 					],
