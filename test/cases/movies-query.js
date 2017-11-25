@@ -38,8 +38,8 @@ limberest.loadValues(options, valuesFiles, (err, vals) => {
           var res = testCase.verify(values, (err, result) => {
             if (err)
               logger.error(err);
-            if (demo.getCallback())
-              demo.getCallback()(err, result, values);
+            if (demo.getUiCallback())
+              demo.getUiCallback()(err, result, values);
           });
         }
       });

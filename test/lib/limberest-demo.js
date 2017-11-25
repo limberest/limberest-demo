@@ -1,5 +1,7 @@
 'use strict';
 
+// Helper for limberest demo test cases.
+
 // const limberest = require('limberest');
 const limberest = require('../../../limberest-js/lib/limberest');
 const Logger = limberest.Logger;
@@ -51,11 +53,11 @@ LimberestDemo.prototype.getAuth = function(options) {
   }
 };
 
-LimberestDemo.prototype.setCallback = function(callback) {
-  this.callback = callback;
+LimberestDemo.prototype.setUiCallback = function(callback) {
+  this.uiCallback = callback;
 };
-LimberestDemo.prototype.getCallback = function() {
-  return this.callback;
+LimberestDemo.prototype.getUiCallback = function() {
+  return this.uiCallback;
 };
 
 // TODO: other than Basic
@@ -69,41 +71,33 @@ LimberestDemo.prototype.getAuthHeader = function() {
   }
 };
 
-LimberestDemo.prototype.cleanupMovie = function(values, callback) {
-  try {
-    var options = Object.assign({}, this.getOptions(), {retainResult: false});
-    var authHeader = this.getAuthHeader();
-    // programmatically run a single test against limberest.io
-    limberest.loadGroup(options.location + '/movies-api.postman', (err, group) => {
-      if (err) {
-        callback(err);
+LimberestDemo.prototype.cleanupMovie = function(values) {
+  var options = Object.assign({}, this.getOptions(), {retainResult: false});
+  var authHeader = this.getAuthHeader();
+  return new Promise(function(resolve, reject) {
+    // Run the DELETE request against limberest.io
+    limberest.loadGroup(options.location + '/movies-api.postman')
+    .then(group => {
+      var request = group.getRequest('DELETE', 'movies/{id}');
+      if (!request.headers)
+        request.headers = {};
+      if (authHeader)
+        request.headers.Authorization = authHeader;
+      return request.run(options, values);
+    })
+    .then(response => {
+      if (response.status.code === 200 || response.status.code === 404) {
+        // success if deleted or not found
+        resolve(response);
       }
       else {
-        var request = group.getRequest('DELETE', 'movies/{id}');
-        if (!request.headers)
-          request.headers = {};
-        if (authHeader)
-          request.headers.Authorization = authHeader;
-        request.run(options, values, (err, response) => {
-          if (err) {
-            callback(err);
-          }
-          else {
-            if (response.status.code === 200 || response.status.code === 404) {
-              // success if deleted or not found
-              callback(null, response);
-            }
-            else {
-              callback(new Error(response.status.code + ': ' + response.status.message), response);
-            }
-          }
-        });
+        reject(new Error(response.status.code + ': ' + response.status.message), response);
       }
+    })
+    .catch(err => {
+      reject(err);
     });
-  }
-  catch (err) {
-    callback(err);
-  }
+  });
 };
 
 LimberestDemo.prototype.getLogger = function(group, caseName) {
