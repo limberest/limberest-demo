@@ -13,22 +13,21 @@ testCase.authHeader = demo.getAuthHeader();
 
 const logger = demo.getLogger('movies-api', testCase.name);
 
-let values;
-let group;
+var group;
+var values;
 
 // Programmatically run an orchestrated sequence of tests using promise syntax.
-limberest.loadValues(options, valuesFiles)
+limberest.loadGroup(options.location + '/movies-api.postman')
+.then(grp => {
+  group = grp;
+  return limberest.loadValues(options, valuesFiles);
+})
 .then(vals => {
   values = vals;
   return demo.cleanupMovie(vals);
 })
 .then(() => {
   logger.info('Cleanup completed for movie: ' + values.id);
-  return limberest.loadGroup(options.location + '/movies-api.postman');
-})
-.then(grp => {
-  group = grp;
-  // create a movie
   var post = group.getRequest('POST', 'movies');
   return testCase.run(post, values);
 })
