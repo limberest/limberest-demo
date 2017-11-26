@@ -71,20 +71,17 @@ LimberestDemo.prototype.getAuthHeader = function() {
   }
 };
 
-LimberestDemo.prototype.cleanupMovie = function(values) {
+LimberestDemo.prototype.cleanupMovie = function(group, values) {
   var options = Object.assign({}, this.getOptions(), {retainResult: false});
   var authHeader = this.getAuthHeader();
   return new Promise(function(resolve, reject) {
     // Run the DELETE request against limberest.io
-    limberest.loadGroup(options.location + '/movies-api.postman')
-    .then(group => {
-      var request = group.getRequest('DELETE', 'movies/{id}');
-      if (!request.headers)
-        request.headers = {};
-      if (authHeader)
-        request.headers.Authorization = authHeader;
-      return request.run(options, values);
-    })
+    var request = group.getRequest('DELETE', 'movies/{id}');
+    if (!request.headers)
+      request.headers = {};
+    if (authHeader)
+      request.headers.Authorization = authHeader;
+    request.run(options, values)
     .then(response => {
       if (response.status.code === 200 || response.status.code === 404) {
         // success if deleted or not found

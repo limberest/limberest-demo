@@ -1,30 +1,30 @@
 'use strict';
 
+/** 
+ * Programmatically run an orchestrated sequence of tests 
+ * using promise syntax.
+ */ 
+
 // const limberest = require('limberest');
 const limberest = require('../../../limberest-js/lib/limberest');
 const demo = require('../lib/limberest-demo');
 
 var options = demo.getOptions();
-var valuesFiles = ['global.values', 'limberest.io.values'];
-
-// var caseName = 'movie-crud';
 const testCase = new limberest.Case('movie-crud', options);
 testCase.authHeader = demo.getAuthHeader();
 
+const values = {
+  'base-url': 'https://limberest.io/demo',
+  id: '435b30ad'
+};
 const logger = demo.getLogger('movies-api', testCase.name);
 
-var group;
-var values;
+var group = 'movies-api.postman'; // to be replaced once loaded
 
-// Programmatically run an orchestrated sequence of tests using promise syntax.
-limberest.loadGroup(options.location + '/movies-api.postman')
-.then(grp => {
-  group = grp;
-  return limberest.loadValues(options, valuesFiles);
-})
-.then(vals => {
-  values = vals;
-  return demo.cleanupMovie(vals);
+limberest.loadGroup(options.location + '/' + group)
+.then(loadedGroup => {
+  group = loadedGroup;
+  return demo.cleanupMovie(group, values);
 })
 .then(() => {
   logger.info('Cleanup completed for movie: ' + values.id);
@@ -54,12 +54,12 @@ limberest.loadGroup(options.location + '/movies-api.postman')
 })
 .then(response => {
   // verify results
-  var res = testCase.verify(values, (err, result) => {
-    if (err)
-      logger.error(err);
-    if (demo.getUiCallback())
-      demo.getUiCallback()(err, result, values);
-  });
+  return testCase.verify(values);
+})
+.then(result => {
+  // tell the UI (limberest-ui)
+  if (demo.getUiCallback())
+    demo.getUiCallback()(err, result, values);
 })
 .catch(err => {
   logger.error(err);
