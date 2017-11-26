@@ -59,8 +59,10 @@ limberest.loadGroup(options.location + '/' + group)
 .then(result => {
   // tell the UI (limberest-ui)
   if (demo.getUiCallback())
-    demo.getUiCallback()(err, result, values);
+    demo.getUiCallback()(null, result, values);
 })
 .catch(err => {
   logger.error(err);
+  if (demo.getUiCallback())
+    demo.getUiCallback()(err);
 });
