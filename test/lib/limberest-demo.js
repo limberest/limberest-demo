@@ -33,6 +33,7 @@ LimberestDemo.prototype.getOptions = function() {
     location: testsLoc,
     expectedResultLocation: testsLoc + '/results/expected',
     resultLocation: '../results/actual',
+    localLocation: this.isRemote() ? 'ui/test' : null,
     debug: true,
     responseHeaders: ['content-type', 'location'],
     retainResult: true,

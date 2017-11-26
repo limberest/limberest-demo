@@ -53,16 +53,19 @@ limberest.loadGroup(options.location + '/' + group)
   return testCase.run(get, values);
 })
 .then(response => {
-  // verify results
-  return testCase.verify(values);
+  // load results
+  return limberest.loadFile(options, 'results/expected/movies-api/movie-crud.yaml');
 })
-.then(result => {
-  // tell the UI (limberest-ui)
-  if (demo.getUiCallback())
-    demo.getUiCallback()(null, result, values);
+.then(expectedResult => {
+  var res = testCase.verifyResult(expectedResult, values);
+  if (demo.getUiCallback()) {
+    // tell the UI (limberest-ui)
+    demo.getUiCallback()(null, res, values);
+  }
 })
 .catch(err => {
   logger.error(err);
-  if (demo.getUiCallback())
+  if (demo.getUiCallback()) {
     demo.getUiCallback()(err);
+  }
 });
