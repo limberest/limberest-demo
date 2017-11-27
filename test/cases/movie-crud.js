@@ -2,7 +2,7 @@
 
 /** 
  * Programmatically run an orchestrated sequence of tests 
- * using promise syntax.
+ * using promise syntax. TODO: regex example
  */ 
 
 // const limberest = require('limberest');
