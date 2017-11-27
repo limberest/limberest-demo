@@ -57,6 +57,7 @@ limberest.loadGroup(options.location + '/' + group)
   return limberest.loadFile(options, 'results/expected/movies-api/movie-crud.yaml');
 })
 .then(expectedResult => {
+  // compare expected vs actual
   var res = testCase.verifyResult(expectedResult, values);
   if (demo.getUiCallback()) {
     // tell the UI (limberest-ui)
