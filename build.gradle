@@ -46,6 +46,11 @@ dependencies {
     compile 'junit:junit:4.12'    
 }
 
+task tests(type: Exec) {
+    executable ((System.properties['os.name'].startsWith('Windows')) ? 'npm.cmd' : 'npm')
+    args 'version'
+}
+
 war {
     // include configs on classpath
     into('WEB-INF/classes') {

@@ -8,9 +8,10 @@
 // const limberest = require('limberest');
 const limberest = require('../../../limberest-js/lib/limberest');
 const demo = require('../lib/limberest-demo');
+const Case = limberest.Case;
 
 var options = demo.getOptions();
-const testCase = new limberest.Case('movie-crud', options);
+const testCase = new Case('movie-crud', options);
 testCase.authHeader = demo.getAuthHeader();
 
 const values = {
