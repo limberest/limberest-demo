@@ -5,8 +5,7 @@
  * using promise syntax. TODO: regex example
  */ 
 
-// const limberest = require('limberest');
-const limberest = require('../../../limberest-js/lib/limberest');
+const limberest = require('limberest');
 const demo = require('../lib/limberest-demo');
 const Case = limberest.Case;
 
