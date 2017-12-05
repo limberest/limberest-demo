@@ -53,7 +53,7 @@ limberest.loadGroup(options.location + '/' + group)
   }
 })
 .catch(err => {
-  demo.getLogger('movies-api', testCase.name).error(err);
+  testCase.handleError(err);
   if (demo.getUiCallback()) {
     demo.getUiCallback()(err);
   }

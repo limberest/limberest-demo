@@ -66,7 +66,7 @@ limberest.loadGroup(options.location + '/' + group)
   }
 })
 .catch(err => {
-  logger.error(err);
+  testCase.handleError(err);
   if (demo.getUiCallback()) {
     demo.getUiCallback()(err);
   }
