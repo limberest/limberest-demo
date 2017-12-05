@@ -1,4 +1,4 @@
-test: movie-crud
+test: create movie
 request:
   url: '${base-url}/movies'
   method: POST
@@ -85,7 +85,7 @@ response:
       },
       "year": 1934
     }
-test: movie-crud
+test: update rating
 request:
   url: '${base-url}/movies/${id}'
   method: PUT
@@ -143,7 +143,7 @@ response:
         "message": "Movie updated: ${id}"
       }
     }
-test: movie-crud
+test: confirm update
 request:
   url: '${base-url}/movies/${id}'
   method: GET
@@ -193,7 +193,7 @@ response:
       },
       "year": 1934
     }
-test: movie-crud
+test: delete movie
 request:
   url: '${base-url}/movies/${id}'
   method: DELETE
@@ -212,7 +212,7 @@ response:
         "message": "Movie deleted: ${id}"
       }
     }
-test: movie-crud
+test: confirm delete
 request:
   url: '${base-url}/movies/${id}'
   method: GET
