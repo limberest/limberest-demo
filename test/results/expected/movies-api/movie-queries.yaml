@@ -1,4 +1,4 @@
-test: movie-queries
+test: 5-star movies from 1935
 request:
   url: 'https://limberest.io/demo/movies?rating=5&year=1935'
   method: GET
@@ -53,7 +53,7 @@ response:
         }
       ]
     }
-test: movie-queries
+test: movies with Phantom in the title
 request:
   url: 'https://limberest.io/demo/movies?title=Phantom'
   method: GET
@@ -419,7 +419,137 @@ response:
         }
       ]
     }
-test: movie-queries
+test: prohibition-era stinkers
+request:
+  url: 'https://limberest.io/demo/movies?rating=<2.5&year=<=1933'
+  method: GET
+  headers:
+    Accept: application/json
+response:
+  status:
+    code: 200
+    message: OK
+  headers:
+    content-type: application/json
+  body: |-
+    {
+      "movies": [
+        {
+          "credits": [
+            {
+              "name": "Albert Ray",
+              "role": "director"
+            },
+            {
+              "name": "Lila Lee",
+              "role": "actor"
+            },
+            {
+              "name": "Monte Blue",
+              "role": "actor"
+            },
+            {
+              "name": "Gwen Lee",
+              "role": "actor"
+            },
+            {
+              "name": "Arthur Housman",
+              "role": "actor"
+            }
+          ],
+          "id": "80c65d74",
+          "poster": "ti.jpg",
+          "rating": 2,
+          "title": "The Intruder",
+          "webRef": {
+            "ref": "tt0023064",
+            "site": "imdb.com"
+          },
+          "year": 1933
+        },
+        {
+          "credits": [
+            {
+              "name": "Armand Schaefer",
+              "role": "director"
+            },
+            {
+              "name": "Jack Mulhall",
+              "role": "actor"
+            },
+            {
+              "name": "Phyllis Barrington",
+              "role": "actor"
+            },
+            {
+              "name": "Crauford Kent",
+              "role": "actor"
+            },
+            {
+              "name": "Mischa Auer",
+              "role": "actor"
+            },
+            {
+              "name": "Louis Natheaux",
+              "role": "actor"
+            }
+          ],
+          "description": "There's a reason you've never heard of Willis Kent Productions, and it has everything to do with uninspired and stiffly-acted features like this limp excuse for a murder mystery.",
+          "id": "f1229df6",
+          "poster": "sh.jpg",
+          "rating": 2,
+          "title": "Sinister Hands",
+          "webRef": {
+            "ref": "tt0023478",
+            "site": "imdb.com"
+          },
+          "year": 1932
+        },
+        {
+          "credits": [
+            {
+              "name": "Hampton Del Ruth",
+              "role": "director"
+            },
+            {
+              "name": "Phil Whitman",
+              "role": "director"
+            },
+            {
+              "name": "Regis Toomey",
+              "role": "actor"
+            },
+            {
+              "name": "June Clyde",
+              "role": "actor"
+            },
+            {
+              "name": "Lucille La Verne",
+              "role": "actor"
+            },
+            {
+              "name": "Jason Robards Sr.",
+              "role": "actor"
+            },
+            {
+              "name": "Dwight Frye",
+              "role": "actor"
+            }
+          ],
+          "description": "This is an utterly forgettable offering from tiny, unprolific Chadwick Productions, packed with all the cliches and none of the charm of so many other early-talkie drawing room murder mysteries.",
+          "id": "c133c6f1",
+          "poster": "twmc.jpg",
+          "rating": 2,
+          "title": "The Wayne Murder Case",
+          "webRef": {
+            "ref": "tt0023520",
+            "site": "imdb.com"
+          },
+          "year": 1932
+        }
+      ]
+    }
+test: top three movies with Bela Lugosi
 request:
   url: >-
     https://limberest.io/demo/movies?sort=rating&descending=true&max=3&search=Bela
@@ -552,7 +682,7 @@ response:
         }
       ]
     }
-test: movie-queries
+test: earliest movie directed by Alfred Hitchcock
 request:
   url: 'https://limberest.io/demo/movies?sort=year&max=1&search=Alfred Hitchcock'
   method: GET
@@ -605,137 +735,7 @@ response:
         }
       ]
     }
-test: movie-queries
-request:
-  url: 'https://limberest.io/demo/movies?rating=<2.5&year=<=1933'
-  method: GET
-  headers:
-    Accept: application/json
-response:
-  status:
-    code: 200
-    message: OK
-  headers:
-    content-type: application/json
-  body: |-
-    {
-      "movies": [
-        {
-          "credits": [
-            {
-              "name": "Albert Ray",
-              "role": "director"
-            },
-            {
-              "name": "Lila Lee",
-              "role": "actor"
-            },
-            {
-              "name": "Monte Blue",
-              "role": "actor"
-            },
-            {
-              "name": "Gwen Lee",
-              "role": "actor"
-            },
-            {
-              "name": "Arthur Housman",
-              "role": "actor"
-            }
-          ],
-          "id": "80c65d74",
-          "poster": "ti.jpg",
-          "rating": 2,
-          "title": "The Intruder",
-          "webRef": {
-            "ref": "tt0023064",
-            "site": "imdb.com"
-          },
-          "year": 1933
-        },
-        {
-          "credits": [
-            {
-              "name": "Armand Schaefer",
-              "role": "director"
-            },
-            {
-              "name": "Jack Mulhall",
-              "role": "actor"
-            },
-            {
-              "name": "Phyllis Barrington",
-              "role": "actor"
-            },
-            {
-              "name": "Crauford Kent",
-              "role": "actor"
-            },
-            {
-              "name": "Mischa Auer",
-              "role": "actor"
-            },
-            {
-              "name": "Louis Natheaux",
-              "role": "actor"
-            }
-          ],
-          "description": "There's a reason you've never heard of Willis Kent Productions, and it has everything to do with uninspired and stiffly-acted features like this limp excuse for a murder mystery.",
-          "id": "f1229df6",
-          "poster": "sh.jpg",
-          "rating": 2,
-          "title": "Sinister Hands",
-          "webRef": {
-            "ref": "tt0023478",
-            "site": "imdb.com"
-          },
-          "year": 1932
-        },
-        {
-          "credits": [
-            {
-              "name": "Hampton Del Ruth",
-              "role": "director"
-            },
-            {
-              "name": "Phil Whitman",
-              "role": "director"
-            },
-            {
-              "name": "Regis Toomey",
-              "role": "actor"
-            },
-            {
-              "name": "June Clyde",
-              "role": "actor"
-            },
-            {
-              "name": "Lucille La Verne",
-              "role": "actor"
-            },
-            {
-              "name": "Jason Robards Sr.",
-              "role": "actor"
-            },
-            {
-              "name": "Dwight Frye",
-              "role": "actor"
-            }
-          ],
-          "description": "This is an utterly forgettable offering from tiny, unprolific Chadwick Productions, packed with all the cliches and none of the charm of so many other early-talkie drawing room murder mysteries.",
-          "id": "c133c6f1",
-          "poster": "twmc.jpg",
-          "rating": 2,
-          "title": "The Wayne Murder Case",
-          "webRef": {
-            "ref": "tt0023520",
-            "site": "imdb.com"
-          },
-          "year": 1932
-        }
-      ]
-    }
-test: movie-queries
+test: query by id
 request:
   url: 'https://limberest.io/demo/movies?id=8f180e68'
   method: GET

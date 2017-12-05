@@ -16,35 +16,29 @@ var request;
 limberest.loadGroup(options.location + '/' + group)
 .then(loadedGroup => {
   group = loadedGroup;
-  // 5-star movies from 1935
   values.query = 'rating=5&year=1935'; 
   request = group.getRequest('GET', 'movies?{query}');
-  return testCase.run(request, values);
+  return testCase.run(request, values, '5-star movies from 1935');
 })
 .then(response => {
-  // movies with Phantom in the title
   values.query = 'title=Phantom'
-  return testCase.run(request, values);
+  return testCase.run(request, values, 'movies with Phantom in the title');
 })
 .then(response => {
-  // top three movies with Bela Lugosi
-  values.query = 'sort=rating&descending=true&max=3&search=Bela Lugosi'
-  return testCase.run(request, values);
-})
-.then(response => {
-  // the earliest movie directed by Alfred Hitchcock
-  values.query = 'sort=year&max=1&search=Alfred Hitchcock'
-  return testCase.run(request, values);
-})
-.then(response => {
-  // prohibition-era stinkers
   values.query = 'rating=<2.5&year=<=1933'
-  return testCase.run(request, values);
+  return testCase.run(request, values, 'prohibition-era stinkers');
 })
 .then(response => {
-  // query by id
+  values.query = 'sort=rating&descending=true&max=3&search=Bela Lugosi'
+  return testCase.run(request, values, 'top three movies with Bela Lugosi');
+})
+.then(response => {
+  values.query = 'sort=year&max=1&search=Alfred Hitchcock'
+  return testCase.run(request, values, 'earliest movie directed by Alfred Hitchcock');
+})
+.then(response => {
   values.query = 'id=8f180e68'
-  return testCase.run(request, values);
+  return testCase.run(request, values, 'query by id');
 })
 .then(response => {
   // load results
