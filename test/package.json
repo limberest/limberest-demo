@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "limberest": "^1.0.14"
-  },  
+  },
   "bugs": {
     "url": "https://github.com/limberest/limberest-demo/issues"
   },
