@@ -30,28 +30,28 @@ limberest.loadGroup(options.location + '/' + group)
 .then(() => {
   logger.info('Cleanup completed for movie: ' + values.id);
   var post = group.getRequest('POST', 'movies');
-  return testCase.run(post, values);
+  return testCase.run(post, values, 'create movie');
 })
 .then(response => {
   // update it (with programmatically-set rating)
   values.rating = 4.5;
   var put = group.getRequest('PUT', 'movies/{id}');
-  return testCase.run(put, values);
+  return testCase.run(put, values, 'update rating');
 })
 .then(response => {
   // confirm update
   var get = group.getRequest('GET', 'movies/{id}');
-  return testCase.run(get, values);
+  return testCase.run(get, values, 'confirm update');
 })
 .then(response => {
   // delete it
   var del = group.getRequest('DELETE', 'movies/{id}');
-  return testCase.run(del, values);
+  return testCase.run(del, values, 'delete movie');
 })
 .then(response => {
   // confirm delete
   var get = group.getRequest('GET', 'movies/{id}');
-  return testCase.run(get, values);
+  return testCase.run(get, values, 'confirm delete');
 })
 .then(response => {
   // load results
