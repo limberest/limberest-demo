@@ -47,7 +47,7 @@ response:
     message: Created
   headers:
     content-type: application/json
-    location: 'https://limberest.io/demo/movies/${id}'
+    location: '${base-url}/movies/${id}'
   body: |-
     {
       "credits": [
