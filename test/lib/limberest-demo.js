@@ -5,6 +5,7 @@
 // const limberest = require('limberest');
 const limberest = require('../../../limberest-js/lib/limberest');
 const Logger = limberest.Logger;
+const Case = limberest.Case;
 
 function LimberestDemo() {
 }
@@ -73,16 +74,13 @@ LimberestDemo.prototype.getAuthHeader = function() {
 };
 
 LimberestDemo.prototype.cleanupMovie = function(group, values) {
-  var options = Object.assign({}, this.getOptions(), {retainResult: false});
-  var authHeader = this.getAuthHeader();
+  var options = Object.assign({}, this.getOptions(), {retainResult: false, retainLog: false});
+  const testCase = new Case('movie-cleanup', options);
+  testCase.authHeader = this.getAuthHeader();
   return new Promise(function(resolve, reject) {
     // Run the DELETE request against limberest.io
     var request = group.getRequest('DELETE', 'movies/{id}');
-    if (!request.headers)
-      request.headers = {};
-    if (authHeader)
-      request.headers.Authorization = authHeader;
-    request.run(options, values)
+    testCase.run(request, values, 'delete movie')
     .then(response => {
       if (response.status.code === 200 || response.status.code === 404) {
         // success if deleted or not found
