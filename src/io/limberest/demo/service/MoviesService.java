@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.models.properties.DecimalProperty;
 
 @Path("/movies")
-@Api("Limberest Demo Movies")
+@Api("movies")
 public class MoviesService extends JsonRestService {
 
     @ApiOperation(value="Retrieve movies",
@@ -53,15 +53,15 @@ public class MoviesService extends JsonRestService {
         JsonList<Movie> jsonList = new JsonList<>(movies, "movies");
         return new Response<>(jsonList.toJson());
     }
-    
+
     @Override
     @ApiOperation(value="Create a movie", response=Movie.class)
     @ApiImplicitParams({
         @ApiImplicitParam(name="Movie", paramType="body", dataType="io.limberest.demo.model.Movie", required=true)})
     public Response<JSONObject> post(Request<JSONObject> request) throws ServiceException {
-        
+
         validate(request);
-        
+
         Movie movie = getPersist().create(new Movie(request.getBody()));
         Response<JSONObject> response = new Response<>(Status.CREATED, movie.toJson());
         response.getHeaders().put("Location", request.getBase() + "/movies/" + movie.getId());
@@ -71,19 +71,19 @@ public class MoviesService extends JsonRestService {
     /**
      * Require authentication for all methods except GET.
      * See also {@link MovieService#getRolesAllowedAccess(Request)}, which further restricts
-     * by authorizing DELETE operations only for a specific role. 
+     * by authorizing DELETE operations only for a specific role.
      */
     @Override
     public boolean isAuthenticationRequired(Request<JSONObject> request) {
         return request.getMethod() != HttpMethod.GET;
     }
-        
+
     protected void validate(Request<JSONObject> request) throws ValidationException {
         Result result = getSwaggerValidator(request).validate(request, true);
         if (result.isError())
             throw new ValidationException(result);
     }
-    
+
     protected SwaggerValidator getSwaggerValidator(Request<JSONObject> request) {
         SwaggerValidator val = new SwaggerValidator(request);
         val.addValidator(DecimalProperty.class, (json, property, path, strict) -> {
@@ -96,7 +96,7 @@ public class MoviesService extends JsonRestService {
         });
         return val;
     }
-    
+
     /**
      * Crude injection.
      */
@@ -108,5 +108,5 @@ public class MoviesService extends JsonRestService {
                 return (Persist<Movie>)persist;
         }
         return new MoviesPersistFile("movies.json");
-    }    
+    }
 }

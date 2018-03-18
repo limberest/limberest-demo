@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
  * Extends {@link MoviesService} for paths qualified by movie ID.
  */
 @Path(value="/movies/{id}" )
-@Api("Limberest Demo Movie")
+@Api("movie")
 public class MovieService extends MoviesService {
 
     /**
@@ -34,9 +34,9 @@ public class MovieService extends MoviesService {
     @ApiImplicitParams({
         @ApiImplicitParam(name="id", paramType="path", dataType="string", required=true)})
     public Response<JSONObject> get(Request<JSONObject> request) throws ServiceException {
-        
+
         validate(request);
-        
+
         String id = request.getPath().getSegment(1);
         Movie movie = getPersist().get(id);
         if (movie == null)
@@ -44,16 +44,16 @@ public class MovieService extends MoviesService {
         else
             return new Response<>(movie.toJson());
     }
-    
+
     @Override
     @ApiOperation(value="Update a movie.", response=StatusResponse.class)
     @ApiImplicitParams({
         @ApiImplicitParam(name="id", paramType="path", dataType="string", required=true),
         @ApiImplicitParam(name="Movie", paramType="body", dataType="io.limberest.demo.model.Movie", required=true)})
     public Response<JSONObject> put(Request<JSONObject> request) throws ServiceException {
-        
+
         validate(request);
-        
+
         String id = request.getPath().getSegment(1);
         if (id == null)
             throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
@@ -62,7 +62,7 @@ public class MovieService extends MoviesService {
             throw new ServiceException(Status.BAD_REQUEST, "Cannot modify movie id: " + id);
         if (movie.getId() == null)
             movie = new Movie(id, movie);
-        
+
         getPersist().update(movie);
         StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie updated: " + movie.getId());
         return new Response<>(statusResponse.toJson());
@@ -73,15 +73,21 @@ public class MovieService extends MoviesService {
     @ApiImplicitParams({
         @ApiImplicitParam(name="id", paramType="path", dataType="string", required=true)})
     public Response<JSONObject> delete(Request<JSONObject> request) throws ServiceException {
-        
+
         validate(request);
-        
+
         String id = request.getPath().getSegment(1);
         if (id == null)
             throw new ServiceException(Status.BAD_REQUEST, "Missing path segment: id");
         getPersist().delete(id);
         StatusResponse statusResponse = new StatusResponse(Status.OK, "Movie deleted: " + id);
         return new Response<>(statusResponse.toJson());
+    }
+
+    @Override
+    public Response<JSONObject> post(Request<JSONObject> request)
+            throws ServiceException {
+        throw new ServiceException(Status.NOT_IMPLEMENTED, HttpMethod.POST + " not implemented");
     }
 
     /**
