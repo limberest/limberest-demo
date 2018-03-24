@@ -7,7 +7,7 @@ be generated from swagger api docs.
 
 Probably the most useful aspect of this is Jsonable model class generation.
 
-To run these scripts, download swagger-codegen-cli.jar into this directory:
+To run these scripts, download swagger-codegen-cli.jar and limberest.jar into this directory:
 http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.3.1/
 
 The following additional debug options are available for all codegen targets:
