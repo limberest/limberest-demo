@@ -28,7 +28,6 @@ sourceSets {
 dependencies {
     
     compile 'io.limberest:limberest:1.1.5'
-    // compile files('c:/eclipse_workspace/limberest/build/classes')
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
     compile 'com.google.guava:guava:21.0'
     compile 'org.reflections:reflections:0.9.10'
