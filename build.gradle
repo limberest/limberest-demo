@@ -1,6 +1,25 @@
 plugins {
     id 'java'
     id 'war'
+    id 'eclipse-wtp'
+}
+
+eclipse {
+    classpath {
+        defaultOutputDir = file("build/classes")
+    }
+    wtp {
+        component {
+            resource sourcePath: "/web", deployPath: "/"
+            resource sourcePath: "/config", deployPath: "/WEB-INF/classes"
+        }
+        facet {
+            facet type: "fixed", name: "jst.web"
+            file.whenMerged {
+                facets.find { it.type.name() == "installed" && it.name == "jst.web" }.version = "3.1"
+            }
+        }
+    }
 }
 
 jar {
