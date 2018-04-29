@@ -24,7 +24,7 @@ eclipse {
 
 jar {
     baseName = 'limberest-demo'
-    version =  '1.1.5'
+    version =  '1.2.1'
 }
 
 repositories {
@@ -46,22 +46,25 @@ sourceSets {
 
 dependencies {
     
-    compile 'io.limberest:limberest:1.1.5'
-    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
-    compile 'com.google.guava:guava:21.0'
-    compile 'org.reflections:reflections:0.9.10'
-    compile 'io.swagger:swagger-core:1.5.13'
-    compile 'io.swagger:swagger-models:1.5.13'
-    compile 'io.swagger:swagger-servlet:1.5.13'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.6'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
-
-    compile 'javax.ws.rs:javax.ws.rs-api:2.0'
-    compile 'org.json:json:20160810'
+    // compile 'io.limberest:limberest:1.2.0'
     compile 'ch.qos.logback:logback-core:1.1.9'
     compile 'ch.qos.logback:logback-classic:1.1.9'
     compile 'io.swagger:swagger-annotations:1.5.13'
-    compile 'junit:junit:4.12'    
+    compile 'junit:junit:4.12'
+
+    // TEMP TEMP TEMP
+    
+    compile fileTree(dir: "../limberest/build/libs", include: "limberest-1.2.1.jar")
+    compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'org.reflections:reflections:0.9.11'
+    compile 'io.swagger:swagger-core:1.5.19'
+    compile 'io.swagger:swagger-models:1.5.19'
+    compile 'io.swagger:swagger-servlet:1.5.19'
+    compile 'javax.ws.rs:javax.ws.rs-api:2.1'
+    compile 'org.json:json:20180130'
+    compile 'ch.qos.logback:logback-core:1.1.9'
+    compile 'ch.qos.logback:logback-classic:1.1.9'
+    compile 'javax.xml.bind:jaxb-api:2.2.1'
 }
 
 task tests(type: Exec) {
