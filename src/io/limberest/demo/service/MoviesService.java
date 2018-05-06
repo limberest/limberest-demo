@@ -45,7 +45,7 @@ public class MoviesService extends JsonRestService {
         @ApiImplicitParam(name="max", paramType="query", dataType="int", value="Limit retrieved items"),
         @ApiImplicitParam(name="start", paramType="query", dataType="int", value="Start with this item index"),
         @ApiImplicitParam(name="search", paramType="query", dataType="string", value="Search string"),
-        @ApiImplicitParam(name="count", paramType="query", dataType="boolean", value="Return item count only"),
+        @ApiImplicitParam(name="count", paramType="query", dataType="boolean", value="Return item count only")
     })
     public Response<JSONObject> get(Request<JSONObject> request) throws ServiceException {
         validate(request);
