@@ -1,20 +1,17 @@
 api:
   definitionClasses:
     - io.limberest.demo.api.Definition
-  prettyIndent: 2
-  # TODO orderedKeys: true (default and current behavior is true)
-  #                   (only goes as deep as definitions and paths) 
 
 request:
   fallbackContentType:
     get: application/json
-  # TODO orderedKeys: true (default and current behavior is true)
-  
-response:
-  prettyIndent: 2
-  # TODO orderedKeys: true (default and current behavior is true)
   
 tests:
   location: c:\eclipse_workspace\limberest-demo\test
   extensions:
     - .postman
+    
+json:
+  prettyIndent: 2
+  # orderedKeys: false
+  # falseValuesOutput: true
