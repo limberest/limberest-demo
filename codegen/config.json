@@ -1,7 +1,0 @@
-{
-  "apiPackage": "io.limberest.demo.service",
-  "modelPackage": "io.limberest.demo.model",
-  "autogenComment": false,
-  "validateRequest": true,
-  "useBeanValidation": true
-}

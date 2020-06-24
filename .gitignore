@@ -1,7 +1,9 @@
+.DS_Store
+.gradle/
 /build/
-/bin/
-/.gradle/
-/deploy/
-generated/
-springgen/
-notes/
+bin/
+movies.json
+/notes/
+.idea/**/*.iml
+.idea/workspace.xml
+.idea/tasks.xml

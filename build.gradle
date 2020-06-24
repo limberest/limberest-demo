@@ -1,72 +1,29 @@
-plugins {
-    id 'java'
-    id 'war'
-    id 'eclipse-wtp'
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
 }
 
-eclipse {
-    classpath {
-        defaultOutputDir = file("build/classes")
-    }
-    wtp {
-        component {
-            resource sourcePath: "/web", deployPath: "/"
-            resource sourcePath: "/config", deployPath: "/WEB-INF/classes"
-        }
-        facet {
-            facet type: "fixed", name: "jst.web"
-            file.whenMerged {
-                facets.find { it.type.name() == "installed" && it.name == "jst.web" }.version = "3.1"
-            }
-        }
-    }
-}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-jar {
-    baseName = 'limberest-demo'
-    version =  '1.2.3'
-}
-
-repositories {
-    mavenCentral()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-}
+group = 'io.limberest'
+version = '1.0.2'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src', 'test']
-        }
-        output.classesDir = 'build/classes'
-    }
+repositories {
+	mavenCentral()
 }
 
 dependencies {
-    
-    compile 'io.limberest:limberest:1.2.5'
-    // compile files('../limberest/build/classes')
-    compile 'ch.qos.logback:logback-core:1.1.9'
-    compile 'ch.qos.logback:logback-classic:1.1.9'
-    compile 'io.swagger:swagger-annotations:1.5.19'
-    compile 'javax.validation:validation-api:2.0.1.Final'
-    testCompile 'junit:junit:4.12'    
-}
-
-task tests(type: Exec) {
-    executable ((System.properties['os.name'].startsWith('Windows')) ? 'npm.cmd' : 'npm')
-    args 'version'
-}
-
-war {
-    // include configs on classpath
-    into('WEB-INF/classes') {
-        from('config') {
-            include '*'
-        }
-    }
-    archiveName = 'demo.war'
-    webXml = file('web/WEB-INF/web.xml')
+  compile "org.springframework.boot:spring-boot-starter-web"
+  compile "io.limberest:limberest:${limberestVersion}"
+  compile 'io.swagger:swagger-annotations:1.5.19'
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
