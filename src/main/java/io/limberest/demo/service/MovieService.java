@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 public class MovieService extends MoviesService {
 
     /**
-     * Overrides {@link MoviesService#get()} to return a single movie with the specified id.
+     * Overrides {@link MoviesService#get(Request)} to return a single movie with the specified id.
      */
     @Override
     @ApiOperation(value="Retrieve a movie by {id}", response=Movie.class)
