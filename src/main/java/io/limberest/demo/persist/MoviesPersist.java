@@ -172,7 +172,7 @@ public class MoviesPersist implements Persist<Movie> {
             File file = new File(path).getAbsoluteFile();
             File parent = file.getParentFile();
             if (parent != null && !parent.exists() && !file.getParentFile().mkdirs())
-                    throw new IOException("Unable to create directories: " + file.getParentFile().getAbsolutePath());
+                throw new IOException("Unable to create directories: " + file.getParentFile().getAbsolutePath());
             Files.write(Paths.get(file.getPath()), movieList.toJson().toString(2).getBytes());
         }
         catch (IOException ex) {
