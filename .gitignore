@@ -2,7 +2,7 @@
 .gradle/
 /build/
 bin/
-movies.json
+./movies.json
 /notes/
 .idea/**/*.iml
 .idea/workspace.xml
